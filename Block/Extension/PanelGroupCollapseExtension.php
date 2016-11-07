@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Extension;
+namespace Sonatra\Component\Bootstrap\Block\Extension;
 
-use Sonatra\Bundle\BlockBundle\Block\AbstractTypeExtension;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\HeadingType;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\LinkType;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\PanelGroupType;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\PanelHeaderType;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\PanelType;
+use Sonatra\Component\Block\AbstractTypeExtension;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Util\BlockUtil;
+use Sonatra\Component\Bootstrap\Block\Type\HeadingType;
+use Sonatra\Component\Bootstrap\Block\Type\LinkType;
+use Sonatra\Component\Bootstrap\Block\Type\PanelGroupType;
+use Sonatra\Component\Bootstrap\Block\Type\PanelHeaderType;
+use Sonatra\Component\Bootstrap\Block\Type\PanelType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
 

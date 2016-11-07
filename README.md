@@ -1,18 +1,17 @@
-Sonatra Bootstrap Bundle
-========================
+Sonatra Bootstrap
+=================
 
-[![Latest Version](https://img.shields.io/packagist/v/sonatra/bootstrap-bundle.svg)](https://packagist.org/packages/sonatra/bootstrap-bundle)
-[![Build Status](https://img.shields.io/travis/sonatra/SonatraBootstrapBundle/master.svg)](https://travis-ci.org/sonatra/SonatraBootstrapBundle)
-[![Coverage Status](https://img.shields.io/coveralls/sonatra/SonatraBootstrapBundle/master.svg)](https://coveralls.io/r/sonatra/SonatraBootstrapBundle?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/SonatraBootstrapBundle/master.svg)](https://scrutinizer-ci.com/g/sonatra/SonatraBootstrapBundle?branch=master)
+[![Latest Version](https://img.shields.io/packagist/v/sonatra/bootstrap.svg)](https://packagist.org/packages/sonatra/bootstrap)
+[![Build Status](https://img.shields.io/travis/sonatra/sonatra-bootstrap/master.svg)](https://travis-ci.org/sonatra/sonatra-bootstrap)
+[![Coverage Status](https://img.shields.io/coveralls/sonatra/sonatra-bootstrap/master.svg)](https://coveralls.io/r/sonatra/sonatra-bootstrap?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/sonatra-bootstrap/master.svg)](https://scrutinizer-ci.com/g/sonatra/sonatra-bootstrap?branch=master)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/08121cec-02b1-444e-8958-dea31cfff0e7.svg)](https://insight.sensiolabs.com/projects/08121cec-02b1-444e-8958-dea31cfff0e7)
 
-The Sonatra BootstrapBundle is an twig DSL for construct a Twitter Bootstrap 3 interface.
+The Sonatra Bootstrap is an twig DSL for construct a Twitter Bootstrap 3 interface.
 
 Features include:
 
 - Auto configuration of asset packages and default extensions
-- Twig base template for the HTML5 responsive container
 - Block type for fundamental HTML element with responsive utilities
   * Grid system
   * Typography and links
@@ -61,7 +60,7 @@ Documentation
 -------------
 
 The bulk of the documentation is stored in the `Resources/doc/index.md`
-file in this bundle:
+file in this library:
 
 [Read the Documentation](Resources/doc/index.md)
 
@@ -73,22 +72,17 @@ All the installation instructions are located in [documentation](Resources/doc/i
 License
 -------
 
-This bundle is under the MIT license. See the complete license in the bundle:
+This library is under the MIT license. See the complete license:
 
 [Resources/meta/LICENSE](Resources/meta/LICENSE)
 
 About
 -----
 
-Sonatra BootstrapBundle is a [sonatra](https://github.com/sonatra) initiative.
-See also the list of [contributors](https://github.com/sonatra/SonatraBootstrapBundle/contributors).
+Sonatra Bootstrap is a [sonatra](https://github.com/sonatra) initiative.
+See also the list of [contributors](https://github.com/sonatra/sonatra-bootstrap/graphs/contributors).
 
 Reporting an issue or a feature request
 ---------------------------------------
 
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/sonatra/SonatraBootstrapBundle/issues).
-
-When reporting a bug, it may be a good idea to reproduce it in a basic project
-built using the [Symfony Standard Edition](https://github.com/symfony/symfony-standard)
-to allow developers of the bundle to reproduce the issue by simply cloning it
-and following some steps.
+Issues and feature requests are tracked in the [Github issue tracker](https://github.com/sonatra/sonatra-bootstrap/issues).

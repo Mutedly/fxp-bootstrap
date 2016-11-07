@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Form\Extension;
+namespace Sonatra\Component\Bootstrap\Form\Extension;
 
-use Sonatra\Bundle\BootstrapBundle\Form\Common\ConfigLayout;
+use Sonatra\Component\Bootstrap\Form\Common\ConfigLayout;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormInterface;

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Type;
+namespace Sonatra\Component\Bootstrap\Block\Type;
 
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\FormType;
+use Sonatra\Component\Block\Extension\Core\Type\FormType;
 
 /**
  * Navbar Form Block Type.

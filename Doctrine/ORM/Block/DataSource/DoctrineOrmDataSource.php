@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Doctrine\ORM\Block\DataSource;
+namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Sonatra\Bundle\BootstrapBundle\Block\DataSource\DataSource;
-use Sonatra\Bundle\BootstrapBundle\Doctrine\ORM\Query\OrderByWalker;
-use Sonatra\Bundle\BlockBundle\Block\Exception\BadMethodCallException;
-use Sonatra\Bundle\BlockBundle\Block\Exception\InvalidArgumentException;
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Query\OrderByWalker;
+use Sonatra\Component\Block\Exception\BadMethodCallException;
+use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;

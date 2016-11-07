@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Form\Common;
+namespace Sonatra\Component\Bootstrap\Form\Common;
 
 use Symfony\Component\Form\FormView;
 

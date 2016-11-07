@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Extension;
+namespace Sonatra\Component\Bootstrap\Block\Extension;
 
-use Sonatra\Bundle\BlockBundle\Block\AbstractTypeExtension;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\ObjectType;
+use Sonatra\Component\Block\AbstractTypeExtension;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Extension\Core\Type\ObjectType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Type;
+namespace Sonatra\Component\Bootstrap\Block\Type;
 
-use Sonatra\Bundle\BlockBundle\Block\AbstractType;
-use Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
-use Sonatra\Bundle\BlockBundle\Block\Exception\InvalidConfigurationException;
-use Sonatra\Bundle\BlockBundle\Block\Util\StringUtil;
+use Sonatra\Component\Block\AbstractType;
+use Sonatra\Component\Block\BlockBuilderInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\Util\BlockUtil;
+use Sonatra\Component\Block\Exception\InvalidConfigurationException;
+use Sonatra\Component\Block\Util\StringUtil;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

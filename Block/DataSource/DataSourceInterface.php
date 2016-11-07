@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\DataSource;
+namespace Sonatra\Component\Bootstrap\Block\DataSource;
 
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockRendererInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockRendererInterface;
+use Sonatra\Component\Block\BlockView;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>

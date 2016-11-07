@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Common;
+namespace Sonatra\Component\Bootstrap\Block\Common;
 
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
+use Sonatra\Component\Block\BlockView;
 
 /**
  * Common config for the layout.

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Form\Extension;
+namespace Sonatra\Component\Bootstrap\Form\Extension;
 
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
+use Sonatra\Component\Block\Util\BlockUtil;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\FormInterface;

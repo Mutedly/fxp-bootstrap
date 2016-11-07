@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Form\Extension;
+namespace Sonatra\Component\Bootstrap\Form\Extension;
 
-use Sonatra\Bundle\BlockBundle\Block\Util\BlockUtil;
-use Sonatra\Bundle\BootstrapBundle\Block\Type\ButtonType;
+use Sonatra\Component\Block\Util\BlockUtil;
+use Sonatra\Component\Bootstrap\Block\Type\ButtonType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
 
 /**
  * Addon Form Extension.
@@ -80,8 +80,8 @@ class AddonExtension extends AbstractTypeExtension
             )
         );
 
-        $resolver->addAllowedTypes('prepend', array('null', 'string', 'Symfony\Component\Form\FormInterface', 'Sonatra\Bundle\BlockBundle\Block\BlockInterface'));
-        $resolver->addAllowedTypes('append', array('null', 'string', 'Symfony\Component\Form\FormInterface', 'Sonatra\Bundle\BlockBundle\Block\BlockInterface'));
+        $resolver->addAllowedTypes('prepend', array('null', 'string', 'Symfony\Component\Form\FormInterface', 'Sonatra\Component\Block\BlockInterface'));
+        $resolver->addAllowedTypes('append', array('null', 'string', 'Symfony\Component\Form\FormInterface', 'Sonatra\Component\Block\BlockInterface'));
         $resolver->addAllowedTypes('addon_attr', 'array');
         $resolver->addAllowedTypes('prepend_attr', 'array');
         $resolver->addAllowedTypes('append_attr', 'array');

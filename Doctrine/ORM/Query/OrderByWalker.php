@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Doctrine\ORM\Query;
+namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Query;
 
 use Doctrine\ORM\Query\TreeWalkerAdapter;
 use Doctrine\ORM\Query\AST\SelectStatement;

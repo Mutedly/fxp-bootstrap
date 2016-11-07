@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Type;
+namespace Sonatra\Component\Bootstrap\Block\Type;
 
-use Sonatra\Bundle\BlockBundle\Block\AbstractType;
+use Sonatra\Component\Block\AbstractType;
 
 /**
  * Navbar Brand Block Type.

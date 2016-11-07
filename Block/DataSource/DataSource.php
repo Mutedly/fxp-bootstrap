@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\DataSource;
+namespace Sonatra\Component\Bootstrap\Block\DataSource;
 
-use Sonatra\Bundle\BlockBundle\Block\BlockBuilderInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockRendererInterface;
-use Sonatra\Bundle\BlockBundle\Block\BlockView;
-use Sonatra\Bundle\BlockBundle\Block\Exception\InvalidArgumentException;
-use Sonatra\Bundle\BlockBundle\Block\Exception\InvalidConfigurationException;
-use Sonatra\Bundle\BlockBundle\Block\Extension\Core\Type\TwigType;
+use Sonatra\Component\Block\BlockBuilderInterface;
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockRendererInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Sonatra\Component\Block\Exception\InvalidConfigurationException;
+use Sonatra\Component\Block\Extension\Core\Type\TwigType;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 

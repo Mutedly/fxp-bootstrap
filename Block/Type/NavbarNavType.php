@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Type;
+namespace Sonatra\Component\Bootstrap\Block\Type;
 
 /**
  * Navbar Nav Block Type.
