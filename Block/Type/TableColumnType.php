@@ -12,11 +12,11 @@
 namespace Sonatra\Component\Bootstrap\Block\Type;
 
 use Sonatra\Component\Block\AbstractType;
-use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Table Column Block Type.

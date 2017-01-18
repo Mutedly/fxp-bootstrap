@@ -11,13 +11,13 @@
 
 namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource;
 
-use Doctrine\ORM\Tools\Pagination\Paginator;
-use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Query\OrderByWalker;
-use Sonatra\Component\Block\Exception\BadMethodCallException;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Sonatra\Component\Block\Exception\BadMethodCallException;
+use Sonatra\Component\Block\Exception\InvalidArgumentException;
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Query\OrderByWalker;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**

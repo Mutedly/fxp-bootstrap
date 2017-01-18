@@ -11,6 +11,8 @@
 
 namespace Sonatra\Component\Bootstrap\Form\Extension;
 
+use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Util\BlockUtil;
 use Sonatra\Component\Bootstrap\Block\Type\ButtonType;
 use Symfony\Component\Form\AbstractTypeExtension;
@@ -18,8 +20,6 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Sonatra\Component\Block\BlockInterface;
-use Sonatra\Component\Block\BlockView;
 
 /**
  * Addon Form Extension.

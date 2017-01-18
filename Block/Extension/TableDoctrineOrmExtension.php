@@ -11,13 +11,13 @@
 
 namespace Sonatra\Component\Bootstrap\Block\Extension;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Sonatra\Component\Block\AbstractTypeExtension;
 use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Bootstrap\Block\Type\TableType;
 use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\DoctrineOrmDataSource;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\QueryBuilder;
-use Doctrine\ORM\Query;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

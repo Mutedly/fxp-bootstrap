@@ -12,8 +12,8 @@
 namespace Sonatra\Component\Bootstrap\Block\Type;
 
 use Sonatra\Component\Block\AbstractType;
-use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Extension\Core\Type\OutputType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

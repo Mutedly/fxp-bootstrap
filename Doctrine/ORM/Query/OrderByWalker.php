@@ -11,11 +11,11 @@
 
 namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Query;
 
-use Doctrine\ORM\Query\TreeWalkerAdapter;
-use Doctrine\ORM\Query\AST\SelectStatement;
-use Doctrine\ORM\Query\AST\PathExpression;
-use Doctrine\ORM\Query\AST\OrderByItem;
 use Doctrine\ORM\Query\AST\OrderByClause;
+use Doctrine\ORM\Query\AST\OrderByItem;
+use Doctrine\ORM\Query\AST\PathExpression;
+use Doctrine\ORM\Query\AST\SelectStatement;
+use Doctrine\ORM\Query\TreeWalkerAdapter;
 
 /**
  * OrderBy Query TreeWalker for Sortable functionality

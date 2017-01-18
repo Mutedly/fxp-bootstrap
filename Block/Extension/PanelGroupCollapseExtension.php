@@ -20,8 +20,8 @@ use Sonatra\Component\Bootstrap\Block\Type\LinkType;
 use Sonatra\Component\Bootstrap\Block\Type\PanelGroupType;
 use Sonatra\Component\Bootstrap\Block\Type\PanelHeaderType;
 use Sonatra\Component\Bootstrap\Block\Type\PanelType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Panel Group Collapse Block Extension.

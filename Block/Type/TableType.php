@@ -13,9 +13,9 @@ namespace Sonatra\Component\Bootstrap\Block\Type;
 
 use Sonatra\Component\Block\AbstractType;
 use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockRendererInterface;
+use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Extension\Core\Type\TextType;
 use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Sonatra\Component\Block\Util\BlockUtil;

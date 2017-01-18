@@ -15,8 +15,8 @@ use Sonatra\Component\Block\AbstractTypeExtension;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Extension\Core\Type\BlockType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Popover Block Extension.

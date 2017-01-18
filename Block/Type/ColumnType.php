@@ -12,11 +12,11 @@
 namespace Sonatra\Component\Bootstrap\Block\Type;
 
 use Sonatra\Component\Block\AbstractType;
-use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\BlockInterface;
+use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Block\Exception\InvalidConfigurationException;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Sonatra\Component\Block\Exception\InvalidConfigurationException;
 
 /**
  * Column Block Type.

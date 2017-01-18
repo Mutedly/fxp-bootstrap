@@ -13,8 +13,8 @@ namespace Sonatra\Component\Bootstrap\Form\Type;
 
 use Sonatra\Component\Bootstrap\Form\Common\ConfigLayout;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
