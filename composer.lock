@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonatra/sonatra-block.git",
-                "reference": "8e1c461b850fa9429b8911e5639b761f8789e4df"
+                "reference": "e7471801ad6f9e4515eaeb9f5d6564b97c9b2050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonatra/sonatra-block/zipball/8e1c461b850fa9429b8911e5639b761f8789e4df",
-                "reference": "8e1c461b850fa9429b8911e5639b761f8789e4df",
+                "url": "https://api.github.com/repos/sonatra/sonatra-block/zipball/e7471801ad6f9e4515eaeb9f5d6564b97c9b2050",
+                "reference": "e7471801ad6f9e4515eaeb9f5d6564b97c9b2050",
                 "shasum": ""
             },
             "require": {
@@ -119,7 +119,7 @@
                 "ui",
                 "user interface"
             ],
-            "time": "2017-01-19 09:36:13"
+            "time": "2017-01-19 11:33:44"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1007,16 +1007,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.8",
+            "version": "v2.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "6314d55f60f85f0295c90688397b75c13faf9f0e"
+                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6314d55f60f85f0295c90688397b75c13faf9f0e",
-                "reference": "6314d55f60f85f0295c90688397b75c13faf9f0e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
+                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
                 "shasum": ""
             },
             "require": {
@@ -1074,7 +1074,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-01-17 17:48:38"
+            "time": "2017-01-19 13:27:33"
         },
         {
             "name": "doctrine/inflector",
