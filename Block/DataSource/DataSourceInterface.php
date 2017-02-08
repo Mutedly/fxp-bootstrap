@@ -24,6 +24,8 @@ interface DataSourceInterface
      * Set block renderer.
      *
      * @param BlockRendererInterface $renderer
+     *
+     * @return self
      */
     public function setRenderer(BlockRendererInterface $renderer);
 
@@ -31,6 +33,8 @@ interface DataSourceInterface
      * Set table view.
      *
      * @param BlockView $view
+     *
+     * @return self
      */
     public function setTableView(BlockView $view);
 
@@ -46,7 +50,7 @@ interface DataSourceInterface
      *
      * @param array $columns The list of column BlockInterface
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setColumns(array $columns);
 
@@ -56,7 +60,7 @@ interface DataSourceInterface
      * @param BlockInterface $column
      * @param int            $index
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function addColumn(BlockInterface $column, $index = null);
 
@@ -65,7 +69,7 @@ interface DataSourceInterface
      *
      * @param int $index
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function removeColumn($index);
 
@@ -81,7 +85,7 @@ interface DataSourceInterface
      *
      * @param string $locale
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setLocale($locale);
 
@@ -97,7 +101,7 @@ interface DataSourceInterface
      *
      * @param \Iterator|array $rows
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setRows($rows);
 
@@ -135,7 +139,7 @@ interface DataSourceInterface
      *
      * @param int $size
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setPageSize($size);
 
@@ -152,7 +156,7 @@ interface DataSourceInterface
      *
      * @param int $size
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setPageSizeMax($size);
 
@@ -168,7 +172,7 @@ interface DataSourceInterface
      *
      * @param int $number
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setPageNumber($number);
 
@@ -191,7 +195,7 @@ interface DataSourceInterface
      *
      * @param array $columns
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setSortColumns(array $columns);
 
@@ -225,7 +229,7 @@ interface DataSourceInterface
      *
      * @param array $parameters
      *
-     * @return DataSourceInterface
+     * @return self
      */
     public function setParameters(array $parameters);
 

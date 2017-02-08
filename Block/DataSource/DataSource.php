@@ -134,6 +134,8 @@ class DataSource implements DataSourceInterface
     public function setRenderer(BlockRendererInterface $renderer)
     {
         $this->renderer = $renderer;
+
+        return $this;
     }
 
     /**
