@@ -14,12 +14,22 @@ namespace Sonatra\Component\Bootstrap\Block\DataSource;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockRendererInterface;
 use Sonatra\Component\Block\BlockView;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
 interface DataSourceInterface
 {
+    /**
+     * Set the data transformer.
+     *
+     * @param DataTransformerInterface $dataTransformer The data transformer
+     *
+     * @return self
+     */
+    public function setDataTransformer(DataTransformerInterface $dataTransformer);
+
     /**
      * Set block renderer.
      *

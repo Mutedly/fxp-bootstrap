@@ -21,6 +21,7 @@ use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Sonatra\Component\Block\Util\BlockUtil;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceInterface;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -73,8 +74,14 @@ class TableType extends AbstractType
      */
     public function finishBlock(BlockBuilderInterface $builder, array $options)
     {
-        if ($builder->getData() instanceof DataSourceInterface) {
-            $builder->getData()->setRenderer($this->renderer);
+        $data = $builder->getData();
+
+        if ($data instanceof DataSourceInterface) {
+            if (null !== $options['data_transformer']) {
+                $data->setDataTransformer($options['data_transformer']);
+            }
+
+            $data->setRenderer($this->renderer);
         }
     }
 
@@ -158,6 +165,7 @@ class TableType extends AbstractType
             'responsive' => false,
             'hover_rows' => false,
             'data' => array(),
+            'data_transformer' => null,
             'locale' => \Locale::getDefault(),
             'page_size' => 0,
             'page_size_max' => 2000,
@@ -181,7 +189,8 @@ class TableType extends AbstractType
         $resolver->setAllowedTypes('condensed', 'bool');
         $resolver->setAllowedTypes('responsive', 'bool');
         $resolver->setAllowedTypes('hover_rows', 'bool');
-        $resolver->setAllowedTypes('data', array('array', 'Sonatra\Component\Bootstrap\Block\DataSource\DataSourceInterface'));
+        $resolver->setAllowedTypes('data', array('array', DataSourceInterface::class));
+        $resolver->setAllowedTypes('data_transformer', array('null', DataTransformerInterface::class));
         $resolver->setAllowedTypes('locale', 'string');
         $resolver->setAllowedTypes('page_size', 'int');
         $resolver->setAllowedTypes('page_start', 'int');

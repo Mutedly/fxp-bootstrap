@@ -18,6 +18,9 @@ use Sonatra\Component\Block\BlockView;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\InvalidConfigurationException;
 use Sonatra\Component\Block\Extension\Core\Type\TwigType;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PostPaginateTransformerInterface;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PrePaginateTransformerInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
@@ -102,6 +105,11 @@ class DataSource implements DataSourceInterface
     protected $parameters;
 
     /**
+     * @var DataTransformerInterface|null
+     */
+    protected $dataTransformer;
+
+    /**
      * @var array
      */
     protected $cacheRows;
@@ -126,6 +134,13 @@ class DataSource implements DataSourceInterface
         $this->sortColumns = array();
         $this->mappingSortColumns = array();
         $this->parameters = array();
+    }
+
+    public function setDataTransformer(DataTransformerInterface $dataTransformer)
+    {
+        $this->dataTransformer = $dataTransformer;
+
+        return $this;
     }
 
     /**
@@ -539,6 +554,10 @@ class DataSource implements DataSourceInterface
 
         $cacheRows = array();
 
+        if ($this->dataTransformer instanceof PrePaginateTransformerInterface) {
+            $pagination = $this->dataTransformer->prePaginate($pagination);
+        }
+
         // loop in rows
         foreach ($pagination as $data) {
             $row = array(
@@ -599,6 +618,10 @@ class DataSource implements DataSourceInterface
             }
 
             $cacheRows[] = $row;
+        }
+
+        if ($this->dataTransformer instanceof PostPaginateTransformerInterface) {
+            $cacheRows = $this->dataTransformer->postPaginate($cacheRows);
         }
 
         return $cacheRows;
