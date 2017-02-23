@@ -50,8 +50,6 @@
     {%- if errors|length > 0 -%}
         {%- if form.parent is empty -%}
             <div class="alert alert-danger">
-        {%- elseif layout|default(null) == 'horizontal' and type|default('text') != 'hidden' -%}
-            <div class="col-{{ layout_col_size }}-offset-{{ layout_col_label }} col-{{ layout_col_size }}-{{ layout_col_control }}">
         {%- endif -%}
 
         <ul{% if form.parent is not empty %} class="help-block"{% endif %}>
@@ -61,8 +59,6 @@
         </ul>
 
         {%- if form.parent is empty -%}
-            </div>
-        {%- elseif layout|default(null) == 'horizontal' and type|default('text') != 'hidden' -%}
             </div>
         {%- endif -%}
     {%- endif -%}
