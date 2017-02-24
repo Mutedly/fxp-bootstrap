@@ -11,7 +11,7 @@
                 {%- set legend_attr = legend_attr|merge({'class': (legend_attr.class|default('') ~ ' col-' ~ layout_col_size ~ '-' ~ (layout_col_label + layout_col_control))|trim}) -%}
             {%- endif -%}
 
-            <legend{% for attrname, attrvalue in legend_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ legend }}</legend>
+            <legend{% for attrname, attrvalue in legend_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{% if translation_domain is not same as(false) %}{{ legend|trans({}, translation_domain) }}{% else %}{{ legend }}{% endif -%}</legend>
         {%- endif -%}
         {%- if form.parent is empty and (form.vars.skip_errors is not defined or form.vars.skip_errors is same as(false)) -%}
             {{- form_errors(form) -}}
