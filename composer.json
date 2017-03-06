@@ -11,18 +11,20 @@
             "email": "francois.pluchino@sonatra.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require" : {
         "php" : ">=7.0.0",
-        "sonatra/block" : "1.0.*@dev"
+        "sonatra/block" : "^1.0.0"
     },
     "require-dev" : {
-        "doctrine/orm": "~2.5",
-        "gedmo/doctrine-extensions": "~2.4"
+        "doctrine/orm": "^2.5.0",
+        "gedmo/doctrine-extensions": "^2.4.0"
     },
     "suggest": {
-        "bower-asset/html5shiv": "v3.7.*",
-        "bower-asset/respond": "v1.4.*",
-        "bower-asset/bootstrap": "v3.3.*",
+        "bower-asset/html5shiv": "^3.7.0",
+        "bower-asset/respond": "^1.4.0",
+        "bower-asset/bootstrap": "^3.3.0",
         "fxp/composer-asset-plugin": "For manage NPM/Bower dependencies with Composer"
     },
     "autoload": {
