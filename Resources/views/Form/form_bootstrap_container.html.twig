@@ -1,6 +1,4 @@
 {% block form_widget_simple -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if layout|default(null) == 'horizontal' and type|default('text') != 'hidden' -%}
         <div class="col-{{ layout_col_size }}-{{ layout_col_control }}">
     {%- endif -%}
@@ -45,8 +43,6 @@
 
 
 {% block form_errors -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if errors|length > 0 -%}
         {%- if form.parent is empty -%}
             <div class="alert alert-danger">
@@ -66,8 +62,6 @@
 
 
 {% block form_row -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- set row_attr = row_attr|default({})|merge({'class': ('form-group ' ~ (row_attr.class|default('')))|trim}) -%}
 
     {%- if size -%}
@@ -86,8 +80,6 @@
 
 
 {% block form_label -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' form-label')|trim}) -%}
 
     {%- if display_label == false -%}

@@ -1,6 +1,5 @@
 {% block pager_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('pager ' ~ attr.class|default(''))|trim}) -%}
     {%- set previous_wrap_attr = {} -%}
     {%- set next_wrap_attr = {} -%}
@@ -38,7 +37,6 @@
 
 {% block pagination_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('pagination ' ~ attr.class|default(''))|trim}) -%}
 
     {%- if size is not null -%}
@@ -57,7 +55,6 @@
 
 {% block pagination_item_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if disabled -%}
         {%- set attr = attr|merge({'class': (attr.class|default('') ~ ' disabled')|trim}) -%}
     {%- elseif active -%}

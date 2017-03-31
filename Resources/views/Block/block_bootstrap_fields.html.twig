@@ -1,6 +1,5 @@
 {% block choice_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if layout is defined and layout == 'horizontal' -%}
         <div class="col-{{ layout_col_size }}-{{ layout_col_control }}">
     {%- endif -%}
@@ -21,7 +20,6 @@
 
 {% block checkbox_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if label is empty -%}
         {%- set label = name|humanize -%}
     {%- endif -%}
@@ -58,7 +56,6 @@
 
 {% block radio_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if label is empty -%}
         {%- set label = name|humanize -%}
     {%- endif -%}
@@ -95,7 +92,6 @@
 
 {% block collection_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('block-collection ' ~ attr.class|default(''))|trim}) -%}
 
     {%- if layout is defined and layout == 'horizontal' -%}
@@ -117,7 +113,6 @@
 
 {% block fieldset_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if block.parent.vars.row|default(false) -%}
         {%- set attr = attr|merge({'class': ('block-group ' ~ attr.class|default(''))|trim}) -%}
     {%- endif -%}
@@ -137,7 +132,6 @@
 
 {% block image_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- if style is not null -%}
         {%- set attr = attr|merge({'class': (attr.class|default('') ~ ' img-' ~ style)|trim}) -%}
     {%- endif -%}

@@ -1,6 +1,5 @@
 {% block container_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set container_class = 'container' -%}
     {%- if fluid -%}
         {%- set container_class = 'container-fluid' -%}
@@ -18,7 +17,6 @@
 
 {% block row_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('row ' ~ attr.class|default(''))|trim}) -%}
 
     <div{{ block('widget_container_attributes') }}>
@@ -33,7 +31,6 @@
 
 {% block col_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set col_class = '' -%}
 
     {%- for item in grid -%}
@@ -58,7 +55,6 @@
 
 {% block label_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('label label-' ~ style ~ ' ' ~ attr.class|default(''))|trim}) -%}
 
     <span{{ block('widget_container_attributes') }}>

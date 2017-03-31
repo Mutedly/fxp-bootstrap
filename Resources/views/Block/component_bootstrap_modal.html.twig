@@ -1,8 +1,5 @@
 {% block modal_widget %}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-    {%- require_script '@bower/bootstrap/js/modal.js' -%}
-
     {%- set attr = attr|merge({'class': ('modal ' ~ attr.class|default(''))|trim}) -%}
     {%- set dialog_attr = dialog_attr|merge({'class': ('modal-dialog ' ~ dialog_attr.class|default(''))|trim}) -%}
     {%- set content_attr = content_attr|merge({'class': ('modal-content ' ~ content_attr.class|default(''))|trim}) -%}

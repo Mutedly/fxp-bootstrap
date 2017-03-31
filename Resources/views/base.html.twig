@@ -47,8 +47,6 @@
         <!--[if lt IE 9]>
         {{- requireScriptsPosition('head_hack_lt_ie_9') -}}
         <![endif]-->
-        {%- require_script '@bower/html5shiv/dist/html5shiv.js' position='head_hack_lt_ie_9' -%}
-        {%- require_script '@bower/respond/dest/respond.src.js' position='head_hack_lt_ie_9' -%}
     {%- endblock head_conditional_comments -%}
 
     {%- block head_inline_javascripts -%}
@@ -74,7 +72,6 @@
     {%- block javascripts -%}
         {{- requireScriptsPosition('body_priority') -}}
         {{- requireScriptsPosition() -}}
-        {%- require_script '@bower/jquery/dist/jquery.js' position='body_priority' -%}
     {%- endblock javascripts -%}
 
     {%- block javascript_global -%}

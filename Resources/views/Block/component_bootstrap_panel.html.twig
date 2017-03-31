@@ -1,6 +1,5 @@
 {% block panel_group_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('panel-group ' ~ attr.class|default(''))|trim}) -%}
 
     <div{{ block('widget_container_attributes') }}>
@@ -15,7 +14,6 @@
 
 {% block panel_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('panel ' ~ attr.class|default(''))|trim}) -%}
 
     {%- if style is not null -%}
@@ -28,8 +26,6 @@
         {%- endif -%}
 
         {%- if group_collapse|default(false) -%}
-            {%- require_script '@bower/bootstrap/js/transition.js', '@bower/bootstrap/js/collapse.js' -%}
-
             <div id="{{ id }}Collapse" class="panel-collapse collapse{% if group_collapse_in|default(false) %} in{% endif %}">
         {%- endif -%}
 
@@ -52,7 +48,6 @@
 
 {% block panel_header_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('panel-heading ' ~ attr.class|default(''))|trim}) -%}
 
     <div{{ block('widget_container_attributes') }}>
@@ -78,7 +73,6 @@
 
 {% block panel_body_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('panel-body ' ~ attr.class|default(''))|trim}) -%}
 
     <div{{ block('widget_container_attributes') }}>
@@ -93,7 +87,6 @@
 
 {% block panel_footer_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('panel-footer ' ~ attr.class|default(''))|trim}) -%}
 
     <div{{ block('widget_container_attributes') }}>

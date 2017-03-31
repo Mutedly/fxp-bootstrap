@@ -1,7 +1,5 @@
 {% block heading_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     <h{{ size }}{{ block('widget_container_attributes') }}>
         {{- label|block_trans({}, translation_domain) -}}
         {%- if secondary is not null -%}
@@ -16,8 +14,6 @@
 
 {% block paragraph_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if lead -%}
         {%- set attr = attr|merge({'class': ('lead ' ~ attr.class|default(''))|trim}) -%}
     {%- endif -%}
@@ -38,8 +34,6 @@
 
 {% block abbreviation_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if label is not null -%}
         {%- set attr = attr|merge({'title': label|block_trans({}, translation_domain)}) -%}
     {%- endif -%}
@@ -56,8 +50,6 @@
 
 {% block address_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     <address{{ block('widget_container_attributes') }}>
         {%- if label is not empty -%}
             <strong>{{- label|block_trans({}, translation_domain) -}}</strong><br>
@@ -71,8 +63,6 @@
 
 {% block blockquote_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if reverse -%}
         {%- set attr = attr|merge({'class': (attr.class|default('') ~ ' blockquote-reverse')|trim}) -%}
     {%- endif -%}
@@ -87,8 +77,6 @@
 
 {% block blockquote_footer_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     <footer{{ block('widget_container_attributes') }}>
         {{- value|raw -}}
         {%- for child in block -%}
@@ -101,8 +89,6 @@
 
 {% block list_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if unstyled is defined and unstyled -%}
         {%- set attr = attr|merge({'class': (attr.class|default('') ~ ' list-unstyled')|trim}) -%}
     {%- endif -%}

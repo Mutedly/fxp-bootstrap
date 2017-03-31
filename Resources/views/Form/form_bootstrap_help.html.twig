@@ -1,6 +1,4 @@
 {% block help_text -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- if help_text is not empty -%}
         {%- set help_attr = help_attr|default({})|merge({'class': ('help-block ' ~ (help_attr.class|default('')))|trim}) -%}
 

@@ -1,6 +1,4 @@
 {% block addon_start -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
-
     {%- set addon_attr = addon_attr|default({}) -%}
     {%- if errors is defined and errors|length > 0 -%}
         {%- set addon_attr = addon_attr|merge({'class': (addon_attr.class|default('') ~ ' has-error')|trim}) -%}
@@ -32,7 +30,6 @@
 
 
 {% block addon_end -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set append_attr = append_attr|default({})|merge({'class': ('input-group-' ~ append_type ~ ' ' ~ (append_attr.class|default('')))|trim}) -%}
 
     {%- if append_string is defined -%}

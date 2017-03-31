@@ -1,6 +1,5 @@
 {% block list_group_widget -%}
 {%- if rendered -%}
-    {%- require_style '@bower/bootstrap/less/bootstrap.less' -%}
     {%- set attr = attr|merge({'class': ('list-group ' ~ attr.class|default(''))|trim}) -%}
 
     {{- block('list_widget') -}}
