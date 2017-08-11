@@ -19,7 +19,9 @@ use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\InvalidConfigurationException;
 use Sonatra\Component\Block\Extension\Core\Type\TwigType;
 use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PostGetDataTransformerInterface;
 use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PostPaginateTransformerInterface;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PreGetDataTransformerInterface;
 use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\PrePaginateTransformerInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
@@ -270,7 +272,9 @@ class DataSource implements DataSourceInterface
             $endTo = $this->getSize();
         }
 
+        $this->doPreGetData();
         $pagination = array_slice($this->rows, $startTo, $endTo);
+        $this->doPostGetData();
         $this->cacheRows = $this->paginateRows($pagination, $this->getStart());
 
         return $this->cacheRows;
@@ -648,5 +652,25 @@ class DataSource implements DataSourceInterface
         }
 
         return $options;
+    }
+
+    /**
+     * Action before getting the data.
+     */
+    protected function doPreGetData()
+    {
+        if ($this->dataTransformer instanceof PreGetDataTransformerInterface) {
+            $this->dataTransformer->preGetData();
+        }
+    }
+
+    /**
+     * Action after getting the data.
+     */
+    protected function doPostGetData()
+    {
+        if ($this->dataTransformer instanceof PostGetDataTransformerInterface) {
+            $this->dataTransformer->postGetData();
+        }
     }
 }

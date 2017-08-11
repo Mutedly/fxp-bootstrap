@@ -168,7 +168,10 @@ class DoctrineOrmDataSource extends DataSource
             $query->setHint(OrderByWalker::HINT_SORT_DIRECTION, $sorts);
         }
 
-        $this->cacheRows = $this->paginateRows($this->paginator->getIterator()->getArrayCopy(), $this->getStart());
+        $this->doPreGetData();
+        $pagination = $this->paginator->getIterator()->getArrayCopy();
+        $this->doPostGetData();
+        $this->cacheRows = $this->paginateRows($pagination, $this->getStart());
 
         return $this->cacheRows;
     }
