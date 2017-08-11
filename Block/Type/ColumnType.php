@@ -151,7 +151,7 @@ class ColumnType extends AbstractType
             throw new InvalidConfigurationException(sprintf('The "%s" prefix option does not exist. Known options are: "'.implode('", "', $this->validPrefix).'"', $type));
         }
 
-        if (!intval($size)) {
+        if (!(int) $size) {
             throw new InvalidConfigurationException(sprintf('The "%s" size option must be an integer', $type));
         }
 
