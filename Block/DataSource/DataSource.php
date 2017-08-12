@@ -15,7 +15,6 @@ use Sonatra\Component\Block\BlockBuilderInterface;
 use Sonatra\Component\Block\BlockInterface;
 use Sonatra\Component\Block\BlockRendererInterface;
 use Sonatra\Component\Block\BlockView;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Block\Exception\InvalidConfigurationException;
 use Sonatra\Component\Block\Extension\Core\Type\TwigType;
 use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
@@ -37,6 +36,11 @@ class DataSource implements DataSourceInterface
     protected $propertyAccessor;
 
     /**
+     * @var DataSourceConfig
+     */
+    protected $config;
+
+    /**
      * @var BlockRendererInterface
      */
     protected $renderer;
@@ -49,22 +53,7 @@ class DataSource implements DataSourceInterface
     /**
      * @var array
      */
-    protected $columns;
-
-    /**
-     * @var array
-     */
-    protected $mappingColumns;
-
-    /**
-     * @var string
-     */
-    protected $locale;
-
-    /**
-     * @var array
-     */
-    protected $rows;
+    protected $rows = array();
 
     /**
      * @var string
@@ -79,37 +68,22 @@ class DataSource implements DataSourceInterface
     /**
      * @var int
      */
-    protected $pageSize;
+    protected $pageSize = 0;
 
     /**
      * @var int
      */
-    protected $pageSizeMax;
+    protected $pageSizeMax = 0;
 
     /**
      * @var int
      */
-    protected $pageNumber;
+    protected $pageNumber = 1;
 
     /**
-     * @var array
+     * @var DataTransformerInterface[]
      */
-    protected $sortColumns;
-
-    /**
-     * @var array
-     */
-    protected $mappingSortColumns;
-
-    /**
-     * @var array
-     */
-    protected $parameters;
-
-    /**
-     * @var DataTransformerInterface|null
-     */
-    protected $dataTransformer;
+    protected $dataTransformers = array();
 
     /**
      * @var array
@@ -125,22 +99,16 @@ class DataSource implements DataSourceInterface
     public function __construct($rowId = null, PropertyAccessorInterface $propertyAccessor = null)
     {
         $this->propertyAccessor = $propertyAccessor ?: PropertyAccess::createPropertyAccessor();
-        $this->columns = array();
-        $this->mappingColumns = null;
-        $this->locale = \Locale::getDefault();
-        $this->rows = array();
+        $this->config = new DataSourceConfig();
         $this->rowId = $rowId;
-        $this->pageSize = 0;
-        $this->pageSizeMax = 0;
-        $this->pageNumber = 1;
-        $this->sortColumns = array();
-        $this->mappingSortColumns = array();
-        $this->parameters = array();
     }
 
-    public function setDataTransformer(DataTransformerInterface $dataTransformer)
+    /**
+     * {@inheritdoc}
+     */
+    public function addDataTransformer(DataTransformerInterface $dataTransformer)
     {
-        $this->dataTransformer = $dataTransformer;
+        $this->dataTransformers[] = $dataTransformer;
 
         return $this;
     }
@@ -179,8 +147,7 @@ class DataSource implements DataSourceInterface
     public function setColumns(array $columns)
     {
         $this->cacheRows = null;
-        $this->mappingColumns = null;
-        $this->columns = array_values($columns);
+        $this->config->setColumns($columns);
 
         return $this;
     }
@@ -191,13 +158,7 @@ class DataSource implements DataSourceInterface
     public function addColumn(BlockInterface $column, $index = null)
     {
         $this->cacheRows = null;
-        $this->mappingColumns = null;
-
-        if (null !== $index) {
-            array_splice($this->columns, $index, 0, $column);
-        } else {
-            array_push($this->columns, $column);
-        }
+        $this->config->addColumn($column, $index);
 
         return $this;
     }
@@ -208,9 +169,7 @@ class DataSource implements DataSourceInterface
     public function removeColumn($index)
     {
         $this->cacheRows = null;
-        $this->mappingColumns = null;
-
-        array_splice($this->columns, $index, 1);
+        $this->config->removeColumn($index);
 
         return $this;
     }
@@ -220,7 +179,7 @@ class DataSource implements DataSourceInterface
      */
     public function getColumns()
     {
-        return $this->columns;
+        return $this->config->getColumns();
     }
 
     /**
@@ -229,7 +188,7 @@ class DataSource implements DataSourceInterface
     public function setLocale($locale = null)
     {
         $this->cacheRows = null;
-        $this->locale = $locale;
+        $this->config->setLocale($locale);
 
         return $this;
     }
@@ -239,7 +198,7 @@ class DataSource implements DataSourceInterface
      */
     public function getLocale()
     {
-        return $this->locale;
+        return $this->config->getLocale();
     }
 
     /**
@@ -382,25 +341,7 @@ class DataSource implements DataSourceInterface
     public function setSortColumns(array $columns)
     {
         $this->cacheRows = null;
-        $this->sortColumns = array();
-        $this->mappingSortColumns = array();
-
-        foreach ($columns as $i => $column) {
-            if (!isset($column['name'])) {
-                throw new InvalidArgumentException('The "name" property of sort column must be present ("sort" property is optional)');
-            }
-
-            if (isset($column['sort']) && 'asc' !== $column['sort'] && 'desc' !== $column['sort']) {
-                throw new InvalidArgumentException('The "sort" property of sort column must have "asc" or "desc" value');
-            }
-
-            if ($this->isSorted($column['name'])) {
-                throw new InvalidArgumentException(sprintf('The "%s" column is already sorted', $column['name']));
-            }
-
-            $this->sortColumns[] = $column;
-            $this->mappingSortColumns[$column['name']] = $i;
-        }
+        $this->config->setSortColumns($columns);
 
         return $this;
     }
@@ -410,7 +351,7 @@ class DataSource implements DataSourceInterface
      */
     public function getSortColumns()
     {
-        return $this->sortColumns;
+        return $this->config->getSortColumns();
     }
 
     /**
@@ -418,17 +359,7 @@ class DataSource implements DataSourceInterface
      */
     public function getSortColumn($column)
     {
-        $val = null;
-
-        if ($this->isSorted($column)) {
-            $def = $this->sortColumns[$this->mappingSortColumns[$column]];
-
-            if (isset($def['sort'])) {
-                $val = $def['sort'];
-            }
-        }
-
-        return $val;
+        return $this->config->getSortColumn($column);
     }
 
     /**
@@ -436,7 +367,7 @@ class DataSource implements DataSourceInterface
      */
     public function isSorted($column)
     {
-        return array_key_exists($column, $this->mappingSortColumns);
+        return $this->config->isSorted($column);
     }
 
     /**
@@ -446,7 +377,7 @@ class DataSource implements DataSourceInterface
     {
         $this->cacheRows = null;
         $this->size = null;
-        $this->parameters = $parameters;
+        $this->config->setParameters($parameters);
 
         return $this;
     }
@@ -456,7 +387,7 @@ class DataSource implements DataSourceInterface
      */
     public function getParameters()
     {
-        return $this->parameters;
+        return $this->config->getParameters();
     }
 
     /**
@@ -467,35 +398,6 @@ class DataSource implements DataSourceInterface
     protected function calculateSize()
     {
         return count($this->rows);
-    }
-
-    /**
-     * Return the index name of column.
-     *
-     * @param string $name
-     *
-     * @return string The index
-     *
-     * @throws InvalidArgumentException When column does not exit
-     */
-    protected function getColumnIndex($name)
-    {
-        if (!is_array($this->mappingColumns)) {
-            $this->mappingColumns = array();
-
-            /* @var BlockInterface $column */
-            foreach ($this->getColumns() as $i => $column) {
-                $this->mappingColumns[$column->getName()] = $i;
-            }
-        }
-
-        if (isset($this->mappingColumns[$name])) {
-            $column = $this->columns[$this->mappingColumns[$name]];
-
-            return $column->getOption('index');
-        }
-
-        throw new InvalidArgumentException(sprintf('The column name "%s" does not exist', $name));
     }
 
     /**
@@ -543,8 +445,8 @@ class DataSource implements DataSourceInterface
     /**
      * Paginate the rows.
      *
-     * @param array $pagination
-     * @param int   $rowNumber
+     * @param array $pagination The pagination
+     * @param int   $rowNumber  The row number
      *
      * @return array The paginated rows
      *
@@ -558,8 +460,10 @@ class DataSource implements DataSourceInterface
 
         $cacheRows = array();
 
-        if ($this->dataTransformer instanceof PrePaginateTransformerInterface) {
-            $pagination = $this->dataTransformer->prePaginate($pagination);
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PrePaginateTransformerInterface) {
+                $pagination = $dataTransformer->prePaginate($this->config, $pagination);
+            }
         }
 
         // loop in rows
@@ -624,8 +528,10 @@ class DataSource implements DataSourceInterface
             $cacheRows[] = $row;
         }
 
-        if ($this->dataTransformer instanceof PostPaginateTransformerInterface) {
-            $cacheRows = $this->dataTransformer->postPaginate($cacheRows);
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PostPaginateTransformerInterface) {
+                $cacheRows = $dataTransformer->postPaginate($this->config, $cacheRows);
+            }
         }
 
         return $cacheRows;
@@ -659,8 +565,10 @@ class DataSource implements DataSourceInterface
      */
     protected function doPreGetData()
     {
-        if ($this->dataTransformer instanceof PreGetDataTransformerInterface) {
-            $this->dataTransformer->preGetData();
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PreGetDataTransformerInterface) {
+                $dataTransformer->preGetData($this->config);
+            }
         }
     }
 
@@ -669,8 +577,10 @@ class DataSource implements DataSourceInterface
      */
     protected function doPostGetData()
     {
-        if ($this->dataTransformer instanceof PostGetDataTransformerInterface) {
-            $this->dataTransformer->postGetData();
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PostGetDataTransformerInterface) {
+                $dataTransformer->postGetData($this->config);
+            }
         }
     }
 }

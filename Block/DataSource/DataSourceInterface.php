@@ -22,13 +22,13 @@ use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInte
 interface DataSourceInterface
 {
     /**
-     * Set the data transformer.
+     * Add the data transformer.
      *
      * @param DataTransformerInterface $dataTransformer The data transformer
      *
      * @return self
      */
-    public function setDataTransformer(DataTransformerInterface $dataTransformer);
+    public function addDataTransformer(DataTransformerInterface $dataTransformer);
 
     /**
      * Set block renderer.
@@ -86,7 +86,7 @@ interface DataSourceInterface
     /**
      * Get columns.
      *
-     * @return array The list of column BlockInterface
+     * @return BlockInterface[]
      */
     public function getColumns();
 

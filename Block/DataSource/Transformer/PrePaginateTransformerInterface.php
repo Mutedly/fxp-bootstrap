@@ -11,6 +11,8 @@
 
 namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
 
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
@@ -19,9 +21,10 @@ interface PrePaginateTransformerInterface extends DataTransformerInterface
     /**
      * Transform the list before the pagination.
      *
-     * @param object[]|array[] $rows The object list
+     * @param DataSourceConfig $config The data source config
+     * @param object[]|array[] $rows   The object list
      *
      * @return object[]|array[]
      */
-    public function prePaginate(array $rows);
+    public function prePaginate(DataSourceConfig $config, array $rows);
 }

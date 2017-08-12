@@ -9,22 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
+namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
 
+use Doctrine\ORM\Query;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-interface PostPaginateTransformerInterface extends DataTransformerInterface
+interface PreExecuteQueryTransformerInterface extends DataTransformerInterface
 {
     /**
-     * Transform the list after the pagination.
+     * Action before executing query.
      *
      * @param DataSourceConfig $config The data source config
-     * @param object[]|array[] $rows   The object list
-     *
-     * @return object[]|array[]
+     * @param Query            $query  The query
      */
-    public function postPaginate(DataSourceConfig $config, array $rows);
+    public function preExecuteQuery(DataSourceConfig $config, Query $query);
 }

@@ -21,7 +21,6 @@ use Sonatra\Component\Block\ResolvedBlockTypeInterface;
 use Sonatra\Component\Block\Util\BlockUtil;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceInterface;
-use Sonatra\Component\Bootstrap\Block\DataSource\Transformer\DataTransformerInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -77,8 +76,8 @@ class TableType extends AbstractType
         $data = $builder->getData();
 
         if ($data instanceof DataSourceInterface) {
-            if (null !== $options['data_transformer']) {
-                $data->setDataTransformer($options['data_transformer']);
+            foreach ($options['data_transformers'] as $transformer) {
+                $data->addDataTransformer($transformer);
             }
 
             $data->setRenderer($this->renderer);
@@ -165,7 +164,7 @@ class TableType extends AbstractType
             'responsive' => false,
             'hover_rows' => false,
             'data' => array(),
-            'data_transformer' => null,
+            'data_transformers' => array(),
             'locale' => \Locale::getDefault(),
             'page_size' => 0,
             'page_size_max' => 2000,
@@ -190,7 +189,7 @@ class TableType extends AbstractType
         $resolver->setAllowedTypes('responsive', 'bool');
         $resolver->setAllowedTypes('hover_rows', 'bool');
         $resolver->setAllowedTypes('data', array('array', DataSourceInterface::class));
-        $resolver->setAllowedTypes('data_transformer', array('null', DataTransformerInterface::class));
+        $resolver->setAllowedTypes('data_transformers', 'array');
         $resolver->setAllowedTypes('locale', 'string');
         $resolver->setAllowedTypes('page_size', 'int');
         $resolver->setAllowedTypes('page_start', 'int');

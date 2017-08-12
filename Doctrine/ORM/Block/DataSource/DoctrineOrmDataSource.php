@@ -13,11 +13,14 @@ namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Sonatra\Component\Block\Exception\BadMethodCallException;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Query\OrderByWalker;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\OrderByTransformer;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PostExecuteQueryTransformerInterface;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PreExecuteQueryTransformerInterface;
+use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\TranslatableTransformer;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
@@ -26,19 +29,9 @@ use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 class DoctrineOrmDataSource extends DataSource
 {
     /**
-     * @var EntityManager
-     */
-    protected $em;
-
-    /**
      * @var Paginator
      */
     protected $paginator;
-
-    /**
-     * @var bool
-     */
-    protected $hasTranslatable;
 
     /**
      * Constructor.
@@ -47,27 +40,20 @@ class DoctrineOrmDataSource extends DataSource
      * @param string                    $rowId            The data fieldname for unique id row definition
      * @param PropertyAccessorInterface $propertyAccessor The property accessor
      */
-    public function __construct(EntityManager $entityManager, $rowId = null, PropertyAccessorInterface $propertyAccessor = null)
+    public function __construct(EntityManager $entityManager,
+                                $rowId = null,
+                                PropertyAccessorInterface $propertyAccessor = null)
     {
         parent::__construct($rowId, $propertyAccessor);
 
-        $this->em = $entityManager;
-        $this->hasTranslatable = false;
-
-        if ($this->em->getEventManager()->hasListeners('postLoad')) {
-            foreach ($this->em->getEventManager()->getListeners('postLoad') as $listener) {
-                if ('Gedmo\Translatable\TranslatableListener' === get_class($listener)) {
-                    $this->hasTranslatable = true;
-                    break;
-                }
-            }
-        }
+        $this->addDataTransformer(new TranslatableTransformer($entityManager));
+        $this->addDataTransformer(new OrderByTransformer());
     }
 
     /**
      * Set query.
      *
-     * @param Query $query
+     * @param Query|QueryBuilder $query
      *
      * @return DoctrineOrmDataSource
      */
@@ -112,61 +98,9 @@ class DoctrineOrmDataSource extends DataSource
         }
 
         $this->cacheRows = array();
-        $sortColumns = $this->getSortColumns();
-        $query = $this->paginator->getQuery();
-
-        $query
+        $this->paginator->getQuery()
             ->setFirstResult($this->getStart() - 1)
             ->setMaxResults($this->getPageSize());
-
-        // query options
-        $tkc = 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker';
-
-        if ($this->hasTranslatable && class_exists($tkc)) {
-            $query->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, $tkc);
-            $query->setHint(\Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE, $this->getLocale());
-        }
-
-        // query sort
-        if (count($sortColumns) > 0) {
-            $customTreeWalkers = $query->getHint(Query::HINT_CUSTOM_TREE_WALKERS);
-
-            if ($customTreeWalkers !== false && is_array($customTreeWalkers)) {
-                $customTreeWalkers = array_merge($customTreeWalkers, array(OrderByWalker::class));
-            } else {
-                $customTreeWalkers = array(OrderByWalker::class);
-            }
-
-            $query->setHint(Query::HINT_CUSTOM_TREE_WALKERS, $customTreeWalkers);
-
-            $aliases = array();
-            $fieldNames = array();
-            $sorts = array();
-
-            foreach ($sortColumns as $sortConfig) {
-                if (!isset($sortConfig['name'])) {
-                    throw new InvalidArgumentException("The 'name' property of sort_columns option must be present");
-                }
-
-                $field = $sortConfig['name'];
-                $index = $this->getColumnIndex($field);
-                $sort = isset($sortConfig['sort']) ? $sortConfig['sort'] : 'asc';
-
-                $exp = explode('.', $index);
-
-                if (1 === count($exp)) {
-                    array_unshift($exp, false);
-                }
-
-                $aliases[] = $exp[0];
-                $fieldNames[] = $exp[1];
-                $sorts[] = $sort;
-            }
-
-            $query->setHint(OrderByWalker::HINT_SORT_ALIAS, $aliases);
-            $query->setHint(OrderByWalker::HINT_SORT_FIELD, $fieldNames);
-            $query->setHint(OrderByWalker::HINT_SORT_DIRECTION, $sorts);
-        }
 
         $this->doPreGetData();
         $pagination = $this->paginator->getIterator()->getArrayCopy();
@@ -182,5 +116,33 @@ class DoctrineOrmDataSource extends DataSource
     protected function calculateSize()
     {
         return (int) null !== $this->paginator ? $this->paginator->count() : 0;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doPreGetData()
+    {
+        parent::doPreGetData();
+
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PreExecuteQueryTransformerInterface) {
+                $dataTransformer->preExecuteQuery($this->config, $this->paginator->getQuery());
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doPostGetData()
+    {
+        parent::doPostGetData();
+
+        foreach ($this->dataTransformers as $dataTransformer) {
+            if ($dataTransformer instanceof PostExecuteQueryTransformerInterface) {
+                $dataTransformer->postExecuteQuery($this->config);
+            }
+        }
     }
 }

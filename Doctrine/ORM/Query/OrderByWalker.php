@@ -11,6 +11,7 @@
 
 namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Query;
 
+use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\AST\OrderByClause;
 use Doctrine\ORM\Query\AST\OrderByItem;
 use Doctrine\ORM\Query\AST\PathExpression;
@@ -78,9 +79,10 @@ class OrderByWalker extends TreeWalkerAdapter
                     throw new \UnexpectedValueException("There is no component aliased by [{$alias}] in the given Query");
                 }
 
-                $meta = $components[$alias];
+                /* @var ClassMetadata $meta */
+                $meta = $components[$alias]['metadata'];
 
-                if (!$meta['metadata']->hasField($field)) {
+                if (!$meta->hasField($field)) {
                     throw new \UnexpectedValueException("There is no such field [{$field}] in the given Query component, aliased by [$alias]");
                 }
             } else {

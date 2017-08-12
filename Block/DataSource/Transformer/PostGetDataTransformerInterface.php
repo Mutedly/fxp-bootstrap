@@ -11,6 +11,8 @@
 
 namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
 
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
@@ -18,6 +20,8 @@ interface PostGetDataTransformerInterface extends DataTransformerInterface
 {
     /**
      * Transform the list after getting the data.
+     *
+     * @param DataSourceConfig $config The data source config
      */
-    public function postGetData();
+    public function postGetData(DataSourceConfig $config);
 }

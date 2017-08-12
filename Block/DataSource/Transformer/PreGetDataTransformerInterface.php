@@ -11,6 +11,8 @@
 
 namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
 
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
@@ -18,6 +20,8 @@ interface PreGetDataTransformerInterface extends DataTransformerInterface
 {
     /**
      * Action before getting the data.
+     *
+     * @param DataSourceConfig $config The data source config
      */
-    public function preGetData();
+    public function preGetData(DataSourceConfig $config);
 }
