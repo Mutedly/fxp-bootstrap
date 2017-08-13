@@ -14,7 +14,7 @@ namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
 use Doctrine\ORM\Query;
 use Sonatra\Component\Block\Exception\InvalidArgumentException;
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Query\OrderByWalker;
+use Sonatra\Component\DoctrineExtensions\ORM\Query\OrderByWalker;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
