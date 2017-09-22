@@ -56,7 +56,7 @@ class TranslatableTransformer implements PreExecuteQueryTransformerInterface
     {
         $tkc = 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker';
 
-        if ($this->hasTranslatable && class_exists($tkc)) {
+        if ($this->hasTranslatable && class_exists($tkc) && false === $query->getHint(Query::HINT_CUSTOM_OUTPUT_WALKER)) {
             $query->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, $tkc);
             $query->setHint(\Gedmo\Translatable\TranslatableListener::HINT_TRANSLATABLE_LOCALE, $config->getLocale());
         }
