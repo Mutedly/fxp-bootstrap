@@ -10,6 +10,7 @@
  */
 
 namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
+use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -41,7 +42,7 @@ class CallbackGetDataTransformer implements PreGetDataTransformerInterface, Post
     /**
      * {@inheritdoc}
      */
-    public function preGetData()
+    public function preGetData(DataSourceConfig $config)
     {
         if (null !== $this->preCallback) {
             call_user_func($this->preCallback);
@@ -51,7 +52,7 @@ class CallbackGetDataTransformer implements PreGetDataTransformerInterface, Post
     /**
      * {@inheritdoc}
      */
-    public function postGetData()
+    public function postGetData(DataSourceConfig $config)
     {
         if (null !== $this->postCallback) {
             call_user_func($this->postCallback);
