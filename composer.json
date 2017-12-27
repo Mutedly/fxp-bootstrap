@@ -14,12 +14,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require" : {
-        "php" : ">=7.0.0",
+        "php" : "^7.1.0",
         "sonatra/block" : "^1.0.0"
     },
     "require-dev" : {
         "sonatra/doctrine-extensions" : "^1.0.0",
-        "doctrine/orm": "^2.5.0",
+        "doctrine/orm": "^2.6.0",
         "gedmo/doctrine-extensions": "^2.4.0",
         "foxy/foxy": "^1.0.0"
     },
