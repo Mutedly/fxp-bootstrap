@@ -10,6 +10,7 @@
  */
 
 namespace Sonatra\Component\Bootstrap\Block\DataSource\Transformer;
+
 use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
 
 /**
