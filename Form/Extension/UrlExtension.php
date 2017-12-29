@@ -28,11 +28,11 @@ class UrlExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'prepend' => function (Options $options) {
                 return $options['default_protocol'].'://';
             },
-        ));
+        ]);
     }
 
     /**

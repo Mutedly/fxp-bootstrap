@@ -28,9 +28,9 @@ class ListGroupType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'tag' => $options['tag'],
-        ));
+        ]);
     }
 
     /**
@@ -40,9 +40,9 @@ class ListGroupType extends AbstractType
     {
         foreach ($view->children as $child) {
             if (in_array('list_group_item', $child->vars['block_prefixes']) && $child->vars['is_link']) {
-                $view->vars = array_replace($view->vars, array(
+                $view->vars = array_replace($view->vars, [
                     'tag' => 'div',
-                ));
+                ]);
 
                 break;
             }
@@ -54,13 +54,13 @@ class ListGroupType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'tag' => 'ul',
-        ));
+        ]);
 
         $resolver->setAllowedTypes('tag', 'string');
 
-        $resolver->setAllowedValues('tag', array('ul', 'div'));
+        $resolver->setAllowedValues('tag', ['ul', 'div']);
     }
 
     /**

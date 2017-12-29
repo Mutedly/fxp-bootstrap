@@ -26,9 +26,9 @@ class DropdownDividerType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'chained_block' => true,
-        ));
+        ]);
     }
 
     /**

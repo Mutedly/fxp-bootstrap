@@ -30,12 +30,12 @@ class ButtonModalExtension extends AbstractTypeExtension
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
         if (null !== $options['modal_id']) {
-            $view->vars = array_replace($view->vars, array(
-                'attr' => array_replace($view->vars['attr'], array(
+            $view->vars = array_replace($view->vars, [
+                'attr' => array_replace($view->vars['attr'], [
                     'data-toggle' => 'modal',
                     'data-target' => sprintf('#%s', trim($options['modal_id'], '#')),
-                )),
-            ));
+                ]),
+            ]);
         }
     }
 
@@ -44,11 +44,11 @@ class ButtonModalExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'modal_id' => null,
-        ));
+        ]);
 
-        $resolver->addAllowedTypes('modal_id', array('null', 'string'));
+        $resolver->addAllowedTypes('modal_id', ['null', 'string']);
     }
 
     /**

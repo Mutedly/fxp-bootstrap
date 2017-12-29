@@ -29,11 +29,11 @@ class NavbarType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'style' => $options['style'],
             'position' => $options['position'],
             'affix_style' => $options['affix_style'],
-        ));
+        ]);
     }
 
     /**
@@ -74,18 +74,18 @@ class NavbarType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'label' => 'Toggle navigation',
             'style' => 'default',
             'position' => null,
             'affix_style' => false,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('style', 'string');
-        $resolver->setAllowedTypes('position', array('null', 'string'));
+        $resolver->setAllowedTypes('position', ['null', 'string']);
 
-        $resolver->setAllowedValues('style', array('default', 'inverse'));
-        $resolver->setAllowedValues('position', array(null, 'static-top', 'fixed-top', 'fixed-bottom'));
+        $resolver->setAllowedValues('style', ['default', 'inverse']);
+        $resolver->setAllowedValues('position', [null, 'static-top', 'fixed-top', 'fixed-bottom']);
         $resolver->setAllowedTypes('affix_style', 'bool');
     }
 

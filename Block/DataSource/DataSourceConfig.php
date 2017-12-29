@@ -27,7 +27,7 @@ class DataSourceConfig
     /**
      * @var array
      */
-    protected $columns = array();
+    protected $columns = [];
 
     /**
      * @var array|null
@@ -37,17 +37,17 @@ class DataSourceConfig
     /**
      * @var array
      */
-    protected $sortColumns = array();
+    protected $sortColumns = [];
 
     /**
      * @var array
      */
-    protected $mappingSortColumns = array();
+    protected $mappingSortColumns = [];
 
     /**
      * @var array
      */
-    protected $parameters = array();
+    protected $parameters = [];
 
     /**
      * @var int
@@ -156,8 +156,8 @@ class DataSourceConfig
      */
     public function setSortColumns(array $columns)
     {
-        $this->sortColumns = array();
-        $this->mappingSortColumns = array();
+        $this->sortColumns = [];
+        $this->mappingSortColumns = [];
 
         foreach ($columns as $i => $column) {
             if (!isset($column['name'])) {
@@ -259,7 +259,7 @@ class DataSourceConfig
     public function getColumnIndex($name)
     {
         if (!is_array($this->mappingColumns)) {
-            $this->mappingColumns = array();
+            $this->mappingColumns = [];
 
             /* @var BlockInterface $column */
             foreach ($this->getColumns() as $i => $column) {

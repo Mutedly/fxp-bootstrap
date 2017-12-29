@@ -29,7 +29,7 @@ class ButtonType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'tag' => $options['tag'],
             'disabled' => $options['disabled'],
             'src' => $options['src'],
@@ -39,7 +39,7 @@ class ButtonType extends AbstractType
             'prepend' => $options['prepend'],
             'append' => $options['append'],
             'caret' => $options['caret'],
-        ));
+        ]);
     }
 
     /**
@@ -53,12 +53,12 @@ class ButtonType extends AbstractType
 
         // layout
         if (null !== $view->parent && isset($view->parent->vars['layout'])) {
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'layout' => $view->parent->vars['layout'],
                 'layout_col_size' => $view->parent->vars['layout_col_size'],
                 'layout_col_label' => $view->parent->vars['layout_col_label'],
                 'layout_col_control' => $view->parent->vars['layout_col_control'],
-            ));
+            ]);
 
             if ('inline' === $view->vars['layout']) {
                 $view->vars['display_label'] = false;
@@ -90,7 +90,7 @@ class ButtonType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'tag' => null,
             'label' => '',
             'disabled' => false,
@@ -102,21 +102,21 @@ class ButtonType extends AbstractType
             'append' => null,
             'dropup' => false,
             'caret' => true,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('tag', array('null', 'string'));
-        $resolver->setAllowedTypes('src', array('null', 'string'));
-        $resolver->setAllowedTypes('style', array('null', 'string'));
-        $resolver->setAllowedTypes('size', array('null', 'string'));
+        $resolver->setAllowedTypes('tag', ['null', 'string']);
+        $resolver->setAllowedTypes('src', ['null', 'string']);
+        $resolver->setAllowedTypes('style', ['null', 'string']);
+        $resolver->setAllowedTypes('size', ['null', 'string']);
         $resolver->setAllowedTypes('block_level', 'bool');
-        $resolver->setAllowedTypes('prepend', array('null', 'string'));
-        $resolver->setAllowedTypes('append', array('null', 'string'));
+        $resolver->setAllowedTypes('prepend', ['null', 'string']);
+        $resolver->setAllowedTypes('append', ['null', 'string']);
         $resolver->setAllowedTypes('dropup', 'bool');
         $resolver->setAllowedTypes('caret', 'bool');
 
-        $resolver->setAllowedValues('tag', array(null, 'button', 'a'));
-        $resolver->setAllowedValues('style', array(null, 'default', 'primary', 'success', 'info', 'warning', 'danger', 'link'));
-        $resolver->setAllowedValues('size', array(null, 'xs', 'sm', 'lg'));
+        $resolver->setAllowedValues('tag', [null, 'button', 'a']);
+        $resolver->setAllowedValues('style', [null, 'default', 'primary', 'success', 'info', 'warning', 'danger', 'link']);
+        $resolver->setAllowedValues('size', [null, 'xs', 'sm', 'lg']);
 
         $resolver->setNormalizer('src', function (Options $options, $value = null) {
             if (isset($options['data'])) {

@@ -33,10 +33,10 @@ class PanelHeaderType extends AbstractType
     public function buildBlock(BlockBuilderInterface $builder, array $options)
     {
         if (!BlockUtil::isEmpty($options['label'])) {
-            $builder->add('_heading', HeadingType::class, array(
+            $builder->add('_heading', HeadingType::class, [
                 'size' => 4,
                 'label' => $options['label'],
-            ));
+            ]);
         }
     }
 
@@ -77,9 +77,9 @@ class PanelHeaderType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'inherit_data' => true,
-        ));
+        ]);
     }
 
     /**

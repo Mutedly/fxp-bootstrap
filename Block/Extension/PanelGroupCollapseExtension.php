@@ -46,11 +46,11 @@ class PanelGroupCollapseExtension extends AbstractTypeExtension
                                 $subSubChild->remove($name);
                             }
 
-                            $subSubChild->add('panel_link', LinkType::class, array(
+                            $subSubChild->add('panel_link', LinkType::class, [
                                 'label' => $subSubChild->getOption('label'),
                                 'src' => '#'.BlockUtil::createBlockId($child).'Collapse',
-                                'attr' => array('data-toggle' => 'collapse', 'data-parent' => '#'.BlockUtil::createBlockId($block)),
-                            ));
+                                'attr' => ['data-toggle' => 'collapse', 'data-parent' => '#'.BlockUtil::createBlockId($block)],
+                            ]);
 
                             $subSubChild->setOption('label', null);
                         }
@@ -65,9 +65,9 @@ class PanelGroupCollapseExtension extends AbstractTypeExtension
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'collapsible' => $options['collapsible'],
-        ));
+        ]);
     }
 
     /**
@@ -101,14 +101,14 @@ class PanelGroupCollapseExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'collapsible' => false,
             'collapse_first' => false,
-            'collapse_ins' => array(),
+            'collapse_ins' => [],
             'render_id' => function (Options $options) {
                 return $options['collapsible'];
             },
-        ));
+        ]);
 
         $resolver->addAllowedTypes('collapsible', 'bool');
         $resolver->addAllowedTypes('collapse_first', 'bool');

@@ -30,12 +30,12 @@ class TableColumnType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'index' => $options['index'],
             'formatter' => $options['formatter'],
             'formatter_options' => $options['formatter_options'],
             'empty_data' => $options['empty_data'],
-        ));
+        ]);
     }
 
     /**
@@ -51,19 +51,19 @@ class TableColumnType extends AbstractType
             return $value;
         };
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'index' => $index,
             'data_property_path' => null,
             'formatter' => TextType::class,
-            'formatter_options' => array(),
+            'formatter_options' => [],
             'empty_data' => null,
             'cell_empty_data' => null,
             'override_options' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('formatter', array('null', 'string'));
+        $resolver->setAllowedTypes('formatter', ['null', 'string']);
         $resolver->setAllowedTypes('formatter_options', 'array');
-        $resolver->setAllowedTypes('override_options', array('null', 'Closure'));
+        $resolver->setAllowedTypes('override_options', ['null', 'Closure']);
 
         $resolver->setNormalizer('formatter_options', function (Options $options, $value) {
             $value['empty_data'] = $options['empty_data'];

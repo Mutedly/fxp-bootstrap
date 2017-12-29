@@ -25,11 +25,11 @@ class NavbarCollapseType extends AbstractNavbarItemType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'chained_block' => true,
             'align' => null,
             'render_id' => true,
-        ));
+        ]);
     }
 
     /**

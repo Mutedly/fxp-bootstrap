@@ -29,9 +29,9 @@ class ModalHeaderType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'close_button' => $options['close_button'],
-        ));
+        ]);
     }
 
     /**
@@ -52,9 +52,9 @@ class ModalHeaderType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'close_button' => true,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('close_button', 'bool');
     }

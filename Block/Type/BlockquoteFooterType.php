@@ -28,9 +28,9 @@ class BlockquoteFooterType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'size' => $options['size'],
-        ));
+        ]);
     }
 
     /**
@@ -38,13 +38,13 @@ class BlockquoteFooterType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'size' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('size', array('null', 'string'));
+        $resolver->setAllowedTypes('size', ['null', 'string']);
 
-        $resolver->setAllowedValues('size', array(null, 'sm', 'lg'));
+        $resolver->setAllowedValues('size', [null, 'sm', 'lg']);
     }
 
     /**

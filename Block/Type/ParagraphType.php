@@ -28,11 +28,11 @@ class ParagraphType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'lead' => $options['lead'],
             'align' => $options['align'],
             'emphasis' => $options['emphasis'],
-        ));
+        ]);
     }
 
     /**
@@ -40,18 +40,18 @@ class ParagraphType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'lead' => false,
             'align' => null,
             'emphasis' => null,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('lead', 'bool');
-        $resolver->setAllowedTypes('align', array('null', 'string'));
-        $resolver->setAllowedTypes('emphasis', array('null', 'string'));
+        $resolver->setAllowedTypes('align', ['null', 'string']);
+        $resolver->setAllowedTypes('emphasis', ['null', 'string']);
 
-        $resolver->setAllowedValues('align', array(null, 'left', 'center', 'right', 'justify'));
-        $resolver->setAllowedValues('emphasis', array(null, 'muted', 'primary', 'success', 'info', 'warning', 'danger'));
+        $resolver->setAllowedValues('align', [null, 'left', 'center', 'right', 'justify']);
+        $resolver->setAllowedValues('emphasis', [null, 'muted', 'primary', 'success', 'info', 'warning', 'danger']);
     }
 
     /**

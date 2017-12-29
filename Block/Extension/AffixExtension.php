@@ -41,10 +41,10 @@ class AffixExtension extends AbstractTypeExtension
                 }
             }
 
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'attr' => $attr,
                 'affix_id' => $view->vars['id'],
-            ));
+            ]);
         }
     }
 
@@ -53,25 +53,25 @@ class AffixExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'affix' => array(),
-        ));
+        $resolver->setDefaults([
+            'affix' => [],
+        ]);
 
         $resolver->addAllowedTypes('affix', 'array');
 
         $resolver->setNormalizer('affix', function (Options $options, $value) {
             $affixResolver = new OptionsResolver();
 
-            $affixResolver->setDefaults(array(
+            $affixResolver->setDefaults([
                 'spy' => 'affix',
                 'offset_top' => null,
                 'offset_bottom' => null,
                 'target' => null,
-            ));
+            ]);
 
             $affixResolver->setAllowedTypes('spy', 'string');
-            $affixResolver->setAllowedTypes('offset_top', array('null', 'int', 'string'));
-            $affixResolver->setAllowedTypes('offset_bottom', array('null', 'int', 'string'));
+            $affixResolver->setAllowedTypes('offset_top', ['null', 'int', 'string']);
+            $affixResolver->setAllowedTypes('offset_bottom', ['null', 'int', 'string']);
 
             return $affixResolver->resolve($value);
         });

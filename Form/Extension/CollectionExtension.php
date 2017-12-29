@@ -81,24 +81,24 @@ class CollectionExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'btn_add' => array(),
-            'btn_delete' => array(),
-        ));
+        $resolver->setDefaults([
+            'btn_add' => [],
+            'btn_delete' => [],
+        ]);
 
-        $resolver->addAllowedTypes('btn_add', array('array', 'Symfony\Component\Form\Form'));
-        $resolver->addAllowedTypes('btn_delete', array('array', 'Symfony\Component\Form\Form'));
+        $resolver->addAllowedTypes('btn_add', ['array', 'Symfony\Component\Form\Form']);
+        $resolver->addAllowedTypes('btn_delete', ['array', 'Symfony\Component\Form\Form']);
 
         $btnAddNormalizer = function (Options $options, $value) {
             if (is_array($value)) {
                 $value = array_merge(
-                    array(
+                    [
                         'label' => '',
                         'glyphicon' => 'plus',
                         'size' => 'xs',
                         'style' => 'default',
-                        'attr' => array('class' => 'btn-add'),
-                    ),
+                        'attr' => ['class' => 'btn-add'],
+                    ],
                     $value
                 );
             }
@@ -107,7 +107,7 @@ class CollectionExtension extends AbstractTypeExtension
         };
 
         $optionsNormalizer = function (Options $options, $value) {
-            $value['label_attr'] = array('class' => 'sr-only');
+            $value['label_attr'] = ['class' => 'sr-only'];
 
             // btn delete
             if ($options['allow_delete'] && $options['prototype']) {
@@ -115,22 +115,22 @@ class CollectionExtension extends AbstractTypeExtension
 
                 if (is_array($value['append'])) {
                     $value['append'] = array_merge(
-                        array(
+                        [
                             'label' => '',
                             'glyphicon' => 'remove',
                             'style' => 'danger',
                             'disabled' => $options['disabled'],
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'btn-remove',
-                            ),
-                        ),
+                            ],
+                        ],
                         $value['append']
                     );
 
                     $value['append'] = $this->factory->createNamed('delete', ButtonType::class, null, $value['append']);
                 }
 
-                $value['row_attr'] = array('class' => 'form-collection-row');
+                $value['row_attr'] = ['class' => 'form-collection-row'];
             }
 
             return $value;

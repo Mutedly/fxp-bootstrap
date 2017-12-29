@@ -40,12 +40,12 @@ class ChoiceExtension extends AbstractTypeExtension
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'inline' => true,
-            )
+            ]
         );
 
-        $resolver->addAllowedTypes('inline', array('bool'));
+        $resolver->addAllowedTypes('inline', ['bool']);
     }
 
     /**

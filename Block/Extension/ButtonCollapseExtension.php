@@ -30,12 +30,12 @@ class ButtonCollapseExtension extends AbstractTypeExtension
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
         if (null !== $options['collapse_id']) {
-            $view->vars = array_replace($view->vars, array(
-                'attr' => array_replace($view->vars['attr'], array(
+            $view->vars = array_replace($view->vars, [
+                'attr' => array_replace($view->vars['attr'], [
                     'data-toggle' => 'collapse',
                     'data-target' => sprintf('#%s', trim($options['collapse_id'], '#')),
-                )),
-            ));
+                ]),
+            ]);
         }
     }
 
@@ -44,11 +44,11 @@ class ButtonCollapseExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'collapse_id' => null,
-        ));
+        ]);
 
-        $resolver->addAllowedTypes('collapse_id', array('null', 'string'));
+        $resolver->addAllowedTypes('collapse_id', ['null', 'string']);
     }
 
     /**

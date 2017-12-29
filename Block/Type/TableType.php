@@ -115,7 +115,7 @@ class TableType extends AbstractType
     {
         $block->getData()->setTableView($view);
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'striped' => $options['striped'],
             'bordered' => $options['bordered'],
             'condensed' => $options['condensed'],
@@ -123,7 +123,7 @@ class TableType extends AbstractType
             'hover_rows' => $options['hover_rows'],
             'empty_type' => $options['empty_type'],
             'empty_options' => $options['empty_options'],
-        ));
+        ]);
     }
 
     /**
@@ -131,7 +131,7 @@ class TableType extends AbstractType
      */
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
-        $columns = array();
+        $columns = [];
 
         foreach ($view->children as $name => $child) {
             if (in_array('table_caption', $child->vars['block_prefixes'])) {
@@ -157,21 +157,21 @@ class TableType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'striped' => false,
             'bordered' => false,
             'condensed' => false,
             'responsive' => false,
             'hover_rows' => false,
-            'data' => array(),
-            'data_transformers' => array(),
+            'data' => [],
+            'data_transformers' => [],
             'locale' => \Locale::getDefault(),
             'page_size' => 0,
             'page_size_max' => 2000,
             'page_start' => 1,
             'page_number' => 1,
-            'sort_columns' => array(),
-            'data_parameters' => array(),
+            'sort_columns' => [],
+            'data_parameters' => [],
             'row_id' => 'id',
             'empty_type' => function (Options $options, $value) {
                 if (null === $value && isset($options['empty_options']['data'])) {
@@ -180,15 +180,15 @@ class TableType extends AbstractType
 
                 return $value;
             },
-            'empty_options' => array(),
-        ));
+            'empty_options' => [],
+        ]);
 
         $resolver->setAllowedTypes('striped', 'bool');
         $resolver->setAllowedTypes('bordered', 'bool');
         $resolver->setAllowedTypes('condensed', 'bool');
         $resolver->setAllowedTypes('responsive', 'bool');
         $resolver->setAllowedTypes('hover_rows', 'bool');
-        $resolver->setAllowedTypes('data', array('array', DataSourceInterface::class));
+        $resolver->setAllowedTypes('data', ['array', DataSourceInterface::class]);
         $resolver->setAllowedTypes('data_transformers', 'array');
         $resolver->setAllowedTypes('locale', 'string');
         $resolver->setAllowedTypes('page_size', 'int');
@@ -197,7 +197,7 @@ class TableType extends AbstractType
         $resolver->setAllowedTypes('sort_columns', 'array');
         $resolver->setAllowedTypes('data_parameters', 'array');
         $resolver->setAllowedTypes('row_id', 'string');
-        $resolver->setAllowedTypes('empty_type', array('null', 'string'));
+        $resolver->setAllowedTypes('empty_type', ['null', 'string']);
         $resolver->setAllowedTypes('empty_options', 'array');
 
         $resolver->setNormalizer('empty_options', function (Options $options, $value) {

@@ -41,11 +41,11 @@ class TooltipExtension extends AbstractTypeExtension
                 }
             }
 
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'attr' => $attr,
                 'tooltip_id' => $view->vars['id'],
                 'render_id' => true,
-            ));
+            ]);
         }
     }
 
@@ -54,16 +54,16 @@ class TooltipExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'tooltip' => array(),
-        ));
+        $resolver->setDefaults([
+            'tooltip' => [],
+        ]);
 
         $resolver->addAllowedTypes('tooltip', 'array');
 
         $resolver->setNormalizer('tooltip', function (Options $options, $value) {
             $tooltipResolver = new OptionsResolver();
 
-            $tooltipResolver->setDefaults(array(
+            $tooltipResolver->setDefaults([
                 'toggle' => 'tooltip',
                 'animation' => null,
                 'html' => null,
@@ -73,19 +73,19 @@ class TooltipExtension extends AbstractTypeExtension
                 'trigger' => null,
                 'delay' => null,
                 'container' => null,
-            ));
+            ]);
 
             $tooltipResolver->setAllowedTypes('toggle', 'string');
-            $tooltipResolver->setAllowedTypes('animation', array('null', 'bool'));
-            $tooltipResolver->setAllowedTypes('html', array('null', 'bool'));
-            $tooltipResolver->setAllowedTypes('placement', array('null', 'string'));
-            $tooltipResolver->setAllowedTypes('selector', array('null', 'string', 'bool'));
-            $tooltipResolver->setAllowedTypes('title', array('null', 'string', '\Twig_Markup'));
-            $tooltipResolver->setAllowedTypes('trigger', array('null', 'string'));
-            $tooltipResolver->setAllowedTypes('delay', array('null', 'int'));
-            $tooltipResolver->setAllowedTypes('container', array('null', 'string', 'bool'));
+            $tooltipResolver->setAllowedTypes('animation', ['null', 'bool']);
+            $tooltipResolver->setAllowedTypes('html', ['null', 'bool']);
+            $tooltipResolver->setAllowedTypes('placement', ['null', 'string']);
+            $tooltipResolver->setAllowedTypes('selector', ['null', 'string', 'bool']);
+            $tooltipResolver->setAllowedTypes('title', ['null', 'string', '\Twig_Markup']);
+            $tooltipResolver->setAllowedTypes('trigger', ['null', 'string']);
+            $tooltipResolver->setAllowedTypes('delay', ['null', 'int']);
+            $tooltipResolver->setAllowedTypes('container', ['null', 'string', 'bool']);
 
-            $tooltipResolver->setAllowedValues('placement', array(null, 'top', 'bottom', 'left', 'right', 'auto', 'auto top', 'auto bottom', 'auto left', 'auto right'));
+            $tooltipResolver->setAllowedValues('placement', [null, 'top', 'bottom', 'left', 'right', 'auto', 'auto top', 'auto bottom', 'auto left', 'auto right']);
 
             return $tooltipResolver->resolve($value);
         });

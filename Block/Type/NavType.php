@@ -29,11 +29,11 @@ class NavType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'style' => $options['style'],
             'justifed' => $options['justifed'],
             'stacked' => $options['stacked'],
-        ));
+        ]);
     }
 
     /**
@@ -78,20 +78,20 @@ class NavType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'style' => 'tabs',
             'justifed' => false,
             'stacked' => false,
             'active_first' => true,
             'selected' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('style', array('null', 'string'));
+        $resolver->setAllowedTypes('style', ['null', 'string']);
         $resolver->setAllowedTypes('justifed', 'bool');
         $resolver->setAllowedTypes('active_first', 'bool');
-        $resolver->setAllowedTypes('selected', array('null', 'string'));
+        $resolver->setAllowedTypes('selected', ['null', 'string']);
 
-        $resolver->setAllowedValues('style', array(null, 'tabs', 'pills'));
+        $resolver->setAllowedValues('style', [null, 'tabs', 'pills']);
 
         $resolver->setNormalizer('stacked', function (Options $options, $value = null) {
             if ('tabs' === $options['style'] || null === $options['style']) {

@@ -56,11 +56,11 @@ class ImageType extends AbstractType
             $attr['width'] = $options['width'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'attr' => $attr,
             'style' => $options['style'],
             'responsive' => $options['responsive'],
-        ));
+        ]);
     }
 
     /**
@@ -68,7 +68,7 @@ class ImageType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'mapped' => true,
             'src' => null,
             'alt' => null,
@@ -79,19 +79,19 @@ class ImageType extends AbstractType
             'ismap' => null,
             'usemap' => null,
             'width' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
-        $resolver->setAllowedTypes('alt', array('null', 'string'));
-        $resolver->setAllowedTypes('style', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
+        $resolver->setAllowedTypes('alt', ['null', 'string']);
+        $resolver->setAllowedTypes('style', ['null', 'string']);
         $resolver->setAllowedTypes('responsive', 'bool');
-        $resolver->setAllowedTypes('crossorigin', array('null', 'string'));
-        $resolver->setAllowedTypes('height', array('null', 'string'));
-        $resolver->setAllowedTypes('ismap', array('null', 'string'));
-        $resolver->setAllowedTypes('usemap', array('null', 'string'));
-        $resolver->setAllowedTypes('width', array('null', 'string'));
+        $resolver->setAllowedTypes('crossorigin', ['null', 'string']);
+        $resolver->setAllowedTypes('height', ['null', 'string']);
+        $resolver->setAllowedTypes('ismap', ['null', 'string']);
+        $resolver->setAllowedTypes('usemap', ['null', 'string']);
+        $resolver->setAllowedTypes('width', ['null', 'string']);
 
-        $resolver->setAllowedValues('style', array(null, 'rounded', 'circle', 'thumbnail'));
+        $resolver->setAllowedValues('style', [null, 'rounded', 'circle', 'thumbnail']);
 
         $resolver->setNormalizer('data', function (Options $options, $value) {
             if (isset($options['src'])) {

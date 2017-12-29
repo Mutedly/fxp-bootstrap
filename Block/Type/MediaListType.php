@@ -27,9 +27,9 @@ class MediaListType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'media_list' => true,
-        ));
+        ]);
     }
 
     /**

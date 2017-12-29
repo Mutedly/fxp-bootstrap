@@ -26,9 +26,9 @@ class ListGroupItemHeadingType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'size' => 4,
-        ));
+        ]);
     }
 
     /**

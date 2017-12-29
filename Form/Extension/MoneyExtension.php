@@ -24,7 +24,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class MoneyExtension extends AbstractTypeExtension
 {
-    protected static $patterns = array();
+    protected static $patterns = [];
 
     /**
      * {@inheritdoc}
@@ -75,13 +75,13 @@ class MoneyExtension extends AbstractTypeExtension
     protected static function getPattern($currency)
     {
         if (!$currency) {
-            return array('{{ widget }}', null, null);
+            return ['{{ widget }}', null, null];
         }
 
         $locale = \Locale::getDefault();
 
         if (!isset(self::$patterns[$locale])) {
-            self::$patterns[$locale] = array();
+            self::$patterns[$locale] = [];
         }
 
         if (!isset(self::$patterns[$locale][$currency])) {
@@ -97,11 +97,11 @@ class MoneyExtension extends AbstractTypeExtension
             preg_match('/^([^\s\xc2\xa0]*)[\s\xc2\xa0]*123(?:[,.]0+)?[\s\xc2\xa0]*([^\s\xc2\xa0]*)$/u', $pattern, $matches);
 
             if (!empty($matches[1])) {
-                self::$patterns[$locale][$currency] = array('{{ widget }}', 'prepend', $matches[1]);
+                self::$patterns[$locale][$currency] = ['{{ widget }}', 'prepend', $matches[1]];
             } elseif (!empty($matches[2])) {
-                self::$patterns[$locale][$currency] = array('{{ widget }}', 'append', $matches[2]);
+                self::$patterns[$locale][$currency] = ['{{ widget }}', 'append', $matches[2]];
             } else {
-                self::$patterns[$locale][$currency] = array('{{ widget }}', null, null);
+                self::$patterns[$locale][$currency] = ['{{ widget }}', null, null];
             }
         }
 

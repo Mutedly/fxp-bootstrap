@@ -41,9 +41,9 @@ class PaginationType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'size' => $options['size'],
-        ));
+        ]);
     }
 
     /**
@@ -69,19 +69,19 @@ class PaginationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'size' => null,
             'auto_pager' => true,
-            'previous' => array(),
-            'next' => array(),
-        ));
+            'previous' => [],
+            'next' => [],
+        ]);
 
-        $resolver->setAllowedTypes('size', array('null', 'string'));
+        $resolver->setAllowedTypes('size', ['null', 'string']);
         $resolver->setAllowedTypes('auto_pager', 'bool');
         $resolver->setAllowedTypes('previous', 'array');
         $resolver->setAllowedTypes('next', 'array');
 
-        $resolver->setAllowedValues('size', array(null, 'sm', 'lg'));
+        $resolver->setAllowedValues('size', [null, 'sm', 'lg']);
 
         $resolver->setNormalizer('previous', function (Options $options, $value = null) {
             if (!isset($value['label'])) {

@@ -25,19 +25,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class ColumnType extends AbstractType
 {
-    private $validPrefix = array('xs', 'sm', 'md', 'lg');
+    private $validPrefix = ['xs', 'sm', 'md', 'lg'];
 
     /**
      * {@inheritdoc}
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'grid' => $options['grid'],
             'offset' => $options['offset'],
             'push' => $options['push'],
             'pull' => $options['pull'],
-        ));
+        ]);
     }
 
     /**
@@ -45,17 +45,17 @@ class ColumnType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'grid' => 'md-1',
             'offset' => null,
             'push' => null,
             'pull' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('grid', array('string', 'array'));
-        $resolver->setAllowedTypes('offset', array('null', 'string', 'array'));
-        $resolver->setAllowedTypes('push', array('null', 'string', 'array'));
-        $resolver->setAllowedTypes('pull', array('null', 'string', 'array'));
+        $resolver->setAllowedTypes('grid', ['string', 'array']);
+        $resolver->setAllowedTypes('offset', ['null', 'string', 'array']);
+        $resolver->setAllowedTypes('push', ['null', 'string', 'array']);
+        $resolver->setAllowedTypes('pull', ['null', 'string', 'array']);
 
         $resolver->setNormalizer('grid', function (Options $options, $value = null) {
             $value = $this->convertToArray($value);
@@ -121,9 +121,9 @@ class ColumnType extends AbstractType
     protected function convertToArray($value)
     {
         if (is_string($value)) {
-            $value = array($value);
+            $value = [$value];
         } elseif (null === $value) {
-            $value = array();
+            $value = [];
         }
 
         return $value;
@@ -155,6 +155,6 @@ class ColumnType extends AbstractType
             throw new InvalidConfigurationException(sprintf('The "%s" size option must be an integer', $type));
         }
 
-        return array($prefix, $size);
+        return [$prefix, $size];
     }
 }

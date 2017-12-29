@@ -33,8 +33,8 @@ class PanelType extends AbstractType
     public function buildBlock(BlockBuilderInterface $builder, array $options)
     {
         if (!empty($options['label'])) {
-            $builder->add('header', PanelHeaderType::class, array());
-            $builder->get('header')->add(null, HeadingType::class, array('size' => 4, 'label' => $options['label']));
+            $builder->add('header', PanelHeaderType::class, []);
+            $builder->get('header')->add(null, HeadingType::class, ['size' => 4, 'label' => $options['label']]);
         }
     }
 
@@ -68,9 +68,9 @@ class PanelType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'style' => $options['style'],
-        ));
+        ]);
     }
 
     /**
@@ -98,13 +98,13 @@ class PanelType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'style' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('style', array('null', 'string'));
+        $resolver->setAllowedTypes('style', ['null', 'string']);
 
-        $resolver->setAllowedValues('style', array(null, 'default', 'primary', 'success', 'info', 'warning', 'danger'));
+        $resolver->setAllowedValues('style', [null, 'default', 'primary', 'success', 'info', 'warning', 'danger']);
     }
 
     /**

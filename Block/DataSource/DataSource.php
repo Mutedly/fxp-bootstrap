@@ -53,7 +53,7 @@ class DataSource implements DataSourceInterface
     /**
      * @var array
      */
-    protected $rows = array();
+    protected $rows = [];
 
     /**
      * @var string
@@ -83,7 +83,7 @@ class DataSource implements DataSourceInterface
     /**
      * @var DataTransformerInterface[]
      */
-    protected $dataTransformers = array();
+    protected $dataTransformers = [];
 
     /**
      * @var array
@@ -223,7 +223,7 @@ class DataSource implements DataSourceInterface
             return $this->cacheRows;
         }
 
-        $this->cacheRows = array();
+        $this->cacheRows = [];
         $startTo = ($this->getPageNumber() - 1) * $this->getPageSize();
         $endTo = $this->getPageSize();
 
@@ -458,7 +458,7 @@ class DataSource implements DataSourceInterface
             throw new InvalidConfigurationException('The block renderer must be injected with "setRenderer" method');
         }
 
-        $cacheRows = array();
+        $cacheRows = [];
 
         foreach ($this->dataTransformers as $dataTransformer) {
             if ($dataTransformer instanceof PrePaginateTransformerInterface) {
@@ -468,10 +468,10 @@ class DataSource implements DataSourceInterface
 
         // loop in rows
         foreach ($pagination as $data) {
-            $row = array(
+            $row = [
                 '_row_number' => $rowNumber++,
-                '_attr_columns' => array(),
-            );
+                '_attr_columns' => [],
+            ];
 
             if (null !== $this->rowId) {
                 $rowId = $this->getDataField($data, $this->rowId);
@@ -503,17 +503,17 @@ class DataSource implements DataSourceInterface
                     ? $this->formatIndex($config->getOption('index'))
                     : $field;
                 $cellData = $this->getDataField($data, $field, $config->getOption('cell_empty_data'));
-                $options = array_replace(array('wrapped' => false, 'inherit_data' => false), $config->getOption('formatter_options'));
+                $options = array_replace(['wrapped' => false, 'inherit_data' => false], $config->getOption('formatter_options'));
                 $options = $this->overrideCellOptions($column, $formatter, $data, $options);
 
                 if (TwigType::class === $formatter) {
-                    $options = array_merge_recursive($options, array(
-                        'variables' => array(
+                    $options = array_merge_recursive($options, [
+                        'variables' => [
                             '_column' => $column,
                             '_row_data' => $data,
                             '_row_number' => $row['_row_number'],
-                        ),
-                    ));
+                        ],
+                    ]);
                 }
 
                 /* @var BlockBuilderInterface $config */

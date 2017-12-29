@@ -29,10 +29,10 @@ class CollectionExtension extends AbstractTypeExtension
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
         if (null !== $view->parent) {
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'row' => $view->parent->vars['row'],
                 'row_label' => $view->parent->vars['row_label'],
-            ));
+            ]);
         }
     }
 

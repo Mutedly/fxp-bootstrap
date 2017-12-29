@@ -28,9 +28,9 @@ class BadgeType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'align' => $options['align'],
-        ));
+        ]);
     }
 
     /**
@@ -38,13 +38,13 @@ class BadgeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'align' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('align', array('null', 'string'));
+        $resolver->setAllowedTypes('align', ['null', 'string']);
 
-        $resolver->setAllowedValues('align', array(null, 'left', 'right'));
+        $resolver->setAllowedValues('align', [null, 'left', 'right']);
     }
 
     /**

@@ -29,10 +29,10 @@ class BlockCollapseType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'collapsible' => $options['collapsible'],
             'collapsed' => $options['collapsed'],
-        ));
+        ]);
     }
 
     /**
@@ -40,13 +40,13 @@ class BlockCollapseType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'collapsible' => true,
             'collapsed' => false,
             'render_id' => function (Options $options) {
                 return $options['collapsible'];
             },
-        ));
+        ]);
 
         $resolver->addAllowedTypes('collapsible', 'bool');
         $resolver->addAllowedTypes('collapsed', 'bool');

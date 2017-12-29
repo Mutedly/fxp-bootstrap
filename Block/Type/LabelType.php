@@ -28,9 +28,9 @@ class LabelType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'style' => $options['style'],
-        ));
+        ]);
     }
 
     /**
@@ -38,13 +38,13 @@ class LabelType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'style' => 'default',
-        ));
+        ]);
 
         $resolver->setAllowedTypes('style', 'string');
 
-        $resolver->setAllowedValues('style', array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'));
+        $resolver->setAllowedValues('style', ['default', 'primary', 'success', 'info', 'warning', 'danger', 'link']);
     }
 
     /**

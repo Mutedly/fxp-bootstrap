@@ -26,7 +26,7 @@ class ConfigLayout
     public static function finishView(FormView $view)
     {
         foreach ($view->children as $child) {
-            $child->vars = array_replace($child->vars, array(
+            $child->vars = array_replace($child->vars, [
                 'size' => $view->vars['size'],
                 'layout' => $view->vars['layout'],
                 'layout_col_size' => $view->vars['layout_col_size'],
@@ -35,7 +35,7 @@ class ConfigLayout
                 'validation_state' => $view->vars['validation_state'],
                 'static_control' => $view->vars['static_control'],
                 'static_control_empty' => $view->vars['static_control_empty'],
-            ));
+            ]);
         }
     }
 }

@@ -36,13 +36,13 @@ class ListType extends AbstractType
             $tag = 'dl';
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'style' => $options['style'],
             'tag' => $tag,
             'unstyled' => $options['unstyled'],
             'inline' => $options['inline'],
             'horizontal' => $options['horizontal'],
-        ));
+        ]);
     }
 
     /**
@@ -50,19 +50,19 @@ class ListType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'style' => 'unordered',
             'unstyled' => false,
             'inline' => false,
             'horizontal' => false,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('style', 'string');
         $resolver->setAllowedTypes('unstyled', 'bool');
         $resolver->setAllowedTypes('inline', 'bool');
         $resolver->setAllowedTypes('horizontal', 'bool');
 
-        $resolver->setAllowedValues('style', array('unordered', 'ordered', 'description'));
+        $resolver->setAllowedValues('style', ['unordered', 'ordered', 'description']);
     }
 
     /**

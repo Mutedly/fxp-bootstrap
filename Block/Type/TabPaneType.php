@@ -28,9 +28,9 @@ class TabPaneType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'active' => $options['active'],
-        ));
+        ]);
     }
 
     /**
@@ -38,10 +38,10 @@ class TabPaneType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'active' => false,
             'render_id' => true,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('active', 'bool');
     }

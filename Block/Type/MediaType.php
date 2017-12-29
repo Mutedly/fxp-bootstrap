@@ -29,16 +29,16 @@ class MediaType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'media_list' => false,
             'tag' => 'div',
-        ));
+        ]);
 
         if (isset($view->parent->vars['media_list']) && $view->parent->vars['media_list']) {
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'media_list' => true,
                 'tag' => 'li',
-            ));
+            ]);
         }
     }
 
@@ -69,13 +69,13 @@ class MediaType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'align' => 'left',
-        ));
+        ]);
 
         $resolver->setAllowedTypes('align', 'string');
 
-        $resolver->setAllowedValues('align', array('left', 'right'));
+        $resolver->setAllowedValues('align', ['left', 'right']);
     }
 
     /**

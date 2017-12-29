@@ -28,9 +28,9 @@ class EmbedResponsiveType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'format' => $options['format'],
-        ));
+        ]);
     }
 
     /**
@@ -38,13 +38,13 @@ class EmbedResponsiveType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'format' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('format', array('null', 'string'));
+        $resolver->setAllowedTypes('format', ['null', 'string']);
 
-        $resolver->setAllowedValues('format', array(null, '16by9', '4by3'));
+        $resolver->setAllowedValues('format', [null, '16by9', '4by3']);
     }
 
     /**

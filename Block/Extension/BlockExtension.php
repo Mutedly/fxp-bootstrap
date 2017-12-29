@@ -29,10 +29,10 @@ class BlockExtension extends AbstractTypeExtension
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'row_attr' => $options['row_attr'],
             'display_label' => $options['display_label'],
-        ));
+        ]);
     }
 
     /**
@@ -40,10 +40,10 @@ class BlockExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'row_attr' => array(),
+        $resolver->setDefaults([
+            'row_attr' => [],
             'display_label' => true,
-        ));
+        ]);
 
         $resolver->addAllowedTypes('row_attr', 'array');
         $resolver->addAllowedTypes('display_label', 'bool');

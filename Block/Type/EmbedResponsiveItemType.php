@@ -29,9 +29,9 @@ class EmbedResponsiveItemType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'item_type' => $options['type'],
-        ));
+        ]);
     }
 
     /**
@@ -39,7 +39,7 @@ class EmbedResponsiveItemType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'mapped' => true,
             'src' => null,
             'type' => 'iframe',
@@ -50,12 +50,12 @@ class EmbedResponsiveItemType extends AbstractType
 
                 return $value;
             },
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
         $resolver->setAllowedTypes('type', 'string');
 
-        $resolver->setAllowedValues('type', array('iframe', 'embed', 'object'));
+        $resolver->setAllowedValues('type', ['iframe', 'embed', 'object']);
     }
 
     /**

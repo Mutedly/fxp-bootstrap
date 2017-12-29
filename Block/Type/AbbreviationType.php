@@ -28,9 +28,9 @@ class AbbreviationType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'initialism' => $options['initialism'],
-        ));
+        ]);
     }
 
     /**
@@ -38,9 +38,9 @@ class AbbreviationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'initialism' => false,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('initialism', 'bool');
     }

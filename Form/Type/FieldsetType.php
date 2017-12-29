@@ -29,12 +29,12 @@ class FieldsetType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'legend' => $options['legend'],
             'legend_attr' => $options['legend_attr'],
             'compound' => true,
             'required' => false,
-        ));
+        ]);
     }
 
     /**
@@ -50,15 +50,15 @@ class FieldsetType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'legend' => null,
-            'legend_attr' => array(),
+            'legend_attr' => [],
             'compound' => true,
             'inherit_data' => true,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('legend', array('null', 'string'));
-        $resolver->setAllowedTypes('legend_attr', array('array'));
+        $resolver->setAllowedTypes('legend', ['null', 'string']);
+        $resolver->setAllowedTypes('legend_attr', ['array']);
     }
 
     /**

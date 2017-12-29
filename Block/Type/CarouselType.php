@@ -51,10 +51,10 @@ class CarouselType extends AbstractType
             $attr['data-slide-to'] = $options['slide_to'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'attr' => $attr,
             'control' => $options['control'],
-        ));
+        ]);
     }
 
     /**
@@ -63,7 +63,7 @@ class CarouselType extends AbstractType
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
         if ($options['indicator']) {
-            $indicators = array();
+            $indicators = [];
             $hasActive = false;
             /* @var BlockView $firstChild */
             $firstChild = null;
@@ -92,9 +92,9 @@ class CarouselType extends AbstractType
                 $firstChild->vars['active'] = true;
             }
 
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'indicators' => $indicators,
-            ));
+            ]);
         }
     }
 
@@ -103,7 +103,7 @@ class CarouselType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'render_id' => true,
             'control' => true,
             'indicator' => true,
@@ -112,15 +112,15 @@ class CarouselType extends AbstractType
             'wrap' => null,
             'slide' => null,
             'slide_to' => null,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('control', 'bool');
         $resolver->setAllowedTypes('indicator', 'bool');
-        $resolver->setAllowedTypes('interval', array('null', 'int'));
-        $resolver->setAllowedTypes('pause', array('null', 'string'));
-        $resolver->setAllowedTypes('wrap', array('null', 'bool'));
-        $resolver->setAllowedTypes('slide', array('null', 'string'));
-        $resolver->setAllowedTypes('slide_to', array('null', 'int'));
+        $resolver->setAllowedTypes('interval', ['null', 'int']);
+        $resolver->setAllowedTypes('pause', ['null', 'string']);
+        $resolver->setAllowedTypes('wrap', ['null', 'bool']);
+        $resolver->setAllowedTypes('slide', ['null', 'string']);
+        $resolver->setAllowedTypes('slide_to', ['null', 'int']);
     }
 
     /**

@@ -28,10 +28,10 @@ class HeadingType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'size' => $options['size'],
             'secondary' => $options['secondary'],
-        ));
+        ]);
     }
 
     /**
@@ -39,15 +39,15 @@ class HeadingType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'size' => 1,
             'secondary' => null,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('size', 'int');
-        $resolver->setAllowedTypes('secondary', array('null', 'string'));
+        $resolver->setAllowedTypes('secondary', ['null', 'string']);
 
-        $resolver->setAllowedValues('size', array(1, 2, 3, 4, 5, 6));
+        $resolver->setAllowedValues('size', [1, 2, 3, 4, 5, 6]);
     }
 
     /**

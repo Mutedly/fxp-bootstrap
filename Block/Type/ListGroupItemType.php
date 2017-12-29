@@ -35,12 +35,12 @@ class ListGroupItemType extends AbstractType
             $attr['href'] = $options['src'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'attr' => $attr,
             'active' => $options['active'],
             'is_link' => null !== $options['src'],
             'style' => $options['style'],
-        ));
+        ]);
     }
 
     /**
@@ -48,17 +48,17 @@ class ListGroupItemType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'src' => null,
             'active' => false,
             'style' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
         $resolver->setAllowedTypes('active', 'bool');
-        $resolver->setAllowedTypes('style', array('null', 'string'));
+        $resolver->setAllowedTypes('style', ['null', 'string']);
 
-        $resolver->setAllowedValues('style', array(null, 'success', 'info', 'warning', 'danger'));
+        $resolver->setAllowedValues('style', [null, 'success', 'info', 'warning', 'danger']);
 
         $resolver->setNormalizer('src', function (Options $options, $value = null) {
             if (isset($options['data'])) {

@@ -29,9 +29,9 @@ class GlyphiconType extends AbstractType
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'icon' => $options['icon'],
-        ));
+        ]);
     }
 
     /**
@@ -39,9 +39,9 @@ class GlyphiconType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'icon' => null,
-        ));
+        ]);
 
         $resolver->setAllowedTypes('icon', 'string');
 
@@ -53,7 +53,7 @@ class GlyphiconType extends AbstractType
             return $value;
         });
 
-        $resolver->setAllowedValues('icon', array(
+        $resolver->setAllowedValues('icon', [
             'adjust',
             'adjust',
             'align-center',
@@ -255,7 +255,7 @@ class GlyphiconType extends AbstractType
             'wrench',
             'zoom-in',
             'zoom-out',
-        ));
+        ]);
     }
 
     /**

@@ -97,7 +97,7 @@ class DoctrineOrmDataSource extends DataSource
             throw new BadMethodCallException('The query must be informed before the "getRows" method');
         }
 
-        $this->cacheRows = array();
+        $this->cacheRows = [];
         $this->paginator->getQuery()
             ->setFirstResult($this->getStart() - 1)
             ->setMaxResults($this->getPageSize());

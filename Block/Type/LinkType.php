@@ -63,11 +63,11 @@ class LinkType extends AbstractType
             $attr['type'] = $options['type'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'attr' => $attr,
             'style' => $options['style'],
             'size' => $options['size'],
-        ));
+        ]);
     }
 
     /**
@@ -75,7 +75,7 @@ class LinkType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'src' => null,
             'alt' => null,
             'target' => null,
@@ -86,23 +86,23 @@ class LinkType extends AbstractType
             'type' => null,
             'style' => 'link',
             'size' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
-        $resolver->setAllowedTypes('alt', array('null', 'string'));
-        $resolver->setAllowedTypes('target', array('null', 'string'));
-        $resolver->setAllowedTypes('ping', array('null', 'string'));
-        $resolver->setAllowedTypes('rel', array('null', 'string'));
-        $resolver->setAllowedTypes('media', array('null', 'string'));
-        $resolver->setAllowedTypes('hreflang', array('null', 'string'));
-        $resolver->setAllowedTypes('type', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
+        $resolver->setAllowedTypes('alt', ['null', 'string']);
+        $resolver->setAllowedTypes('target', ['null', 'string']);
+        $resolver->setAllowedTypes('ping', ['null', 'string']);
+        $resolver->setAllowedTypes('rel', ['null', 'string']);
+        $resolver->setAllowedTypes('media', ['null', 'string']);
+        $resolver->setAllowedTypes('hreflang', ['null', 'string']);
+        $resolver->setAllowedTypes('type', ['null', 'string']);
         $resolver->setAllowedTypes('style', 'string');
-        $resolver->setAllowedTypes('size', array('null', 'string'));
+        $resolver->setAllowedTypes('size', ['null', 'string']);
 
-        $resolver->setAllowedValues('target', array(null, 'null', '_blank', '_self', '_top', '_parent'));
-        $resolver->setAllowedValues('rel', array(null, 'alternate', 'author', 'help', 'license', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'tag'));
-        $resolver->setAllowedValues('style', array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'));
-        $resolver->setAllowedValues('size', array(null, 'xs', 'sm', 'lg'));
+        $resolver->setAllowedValues('target', [null, 'null', '_blank', '_self', '_top', '_parent']);
+        $resolver->setAllowedValues('rel', [null, 'alternate', 'author', 'help', 'license', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'tag']);
+        $resolver->setAllowedValues('style', ['default', 'primary', 'success', 'info', 'warning', 'danger', 'link']);
+        $resolver->setAllowedValues('size', [null, 'xs', 'sm', 'lg']);
 
         $resolver->setNormalizer('src', function (Options $options, $value = null) {
             if (isset($options['data'])) {

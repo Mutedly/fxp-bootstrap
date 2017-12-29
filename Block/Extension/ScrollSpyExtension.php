@@ -35,9 +35,9 @@ class ScrollSpyExtension extends AbstractTypeExtension
         if (null !== $scrollSpy['on']) {
             $scrollSpy['target'] = $view->vars['id'];
 
-            $view->vars = array_replace($view->vars, array(
+            $view->vars = array_replace($view->vars, [
                 'scroll_spy' => $scrollSpy,
-            ));
+            ]);
         }
     }
 
@@ -46,24 +46,24 @@ class ScrollSpyExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'scroll_spy' => array(),
-        ));
+        $resolver->setDefaults([
+            'scroll_spy' => [],
+        ]);
 
         $resolver->addAllowedTypes('scroll_spy', 'array');
 
         $resolver->setNormalizer('scroll_spy', function (Options $options, $value) {
             $scrollSpyResolver = new OptionsResolver();
 
-            $scrollSpyResolver->setDefaults(array(
+            $scrollSpyResolver->setDefaults([
                 'spy' => 'scroll',
                 'on' => null,
                 'offset' => null,
-            ));
+            ]);
 
             $scrollSpyResolver->setAllowedTypes('spy', 'string');
-            $scrollSpyResolver->setAllowedTypes('on', array('null', 'string'));
-            $scrollSpyResolver->setAllowedTypes('offset', array('null', 'int'));
+            $scrollSpyResolver->setAllowedTypes('on', ['null', 'string']);
+            $scrollSpyResolver->setAllowedTypes('offset', ['null', 'int']);
 
             return $scrollSpyResolver->resolve($value);
         });

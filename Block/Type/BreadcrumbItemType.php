@@ -35,10 +35,10 @@ class BreadcrumbItemType extends AbstractType
             $linkAttr['href'] = $options['src'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'link_attr' => $linkAttr,
             'active' => $options['active'],
-        ));
+        ]);
     }
 
     /**
@@ -46,13 +46,13 @@ class BreadcrumbItemType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'src' => '#',
-            'link_attr' => array(),
+            'link_attr' => [],
             'active' => false,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
         $resolver->setAllowedTypes('link_attr', 'array');
         $resolver->setAllowedTypes('active', 'bool');
 

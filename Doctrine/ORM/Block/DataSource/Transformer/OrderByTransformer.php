@@ -32,15 +32,15 @@ class OrderByTransformer implements PreExecuteQueryTransformerInterface
             $customTreeWalkers = $query->getHint(Query::HINT_CUSTOM_TREE_WALKERS);
 
             if (!is_array($customTreeWalkers)) {
-                $customTreeWalkers = array();
+                $customTreeWalkers = [];
             }
 
             $customTreeWalkers[] = OrderByWalker::class;
             $query->setHint(Query::HINT_CUSTOM_TREE_WALKERS, $customTreeWalkers);
 
-            $aliases = array();
-            $fieldNames = array();
-            $sorts = array();
+            $aliases = [];
+            $fieldNames = [];
+            $sorts = [];
 
             foreach ($sortColumns as $sortConfig) {
                 if (!isset($sortConfig['name'])) {

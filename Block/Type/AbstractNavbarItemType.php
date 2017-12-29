@@ -39,13 +39,13 @@ abstract class AbstractNavbarItemType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'chained_block' => true,
             'align' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('align', array('null', 'string'));
+        $resolver->setAllowedTypes('align', ['null', 'string']);
 
-        $resolver->setAllowedValues('align', array(null, 'left', 'right'));
+        $resolver->setAllowedValues('align', [null, 'left', 'right']);
     }
 }

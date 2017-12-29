@@ -35,10 +35,10 @@ class DropdownItemType extends AbstractType
             $linkAttr['href'] = $options['src'];
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'link_attr' => $linkAttr,
             'disabled' => $options['disabled'],
-        ));
+        ]);
     }
 
     /**
@@ -46,8 +46,8 @@ class DropdownItemType extends AbstractType
      */
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
-        $prepends = array();
-        $appends = array();
+        $prepends = [];
+        $appends = [];
 
         foreach ($view->children as $name => $child) {
             if (in_array('dropdown_item_prepend', $child->vars['block_prefixes'])) {
@@ -59,10 +59,10 @@ class DropdownItemType extends AbstractType
             }
         }
 
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'item_prepends' => $prepends,
             'item_appends' => $appends,
-        ));
+        ]);
     }
 
     /**
@@ -70,14 +70,14 @@ class DropdownItemType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'src' => '#',
-            'link_attr' => array(),
+            'link_attr' => [],
             'disabled' => false,
             'chained_block' => true,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('src', array('null', 'string'));
+        $resolver->setAllowedTypes('src', ['null', 'string']);
         $resolver->setAllowedTypes('link_attr', 'array');
         $resolver->setAllowedTypes('disabled', 'bool');
 

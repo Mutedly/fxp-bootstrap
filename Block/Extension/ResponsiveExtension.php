@@ -29,7 +29,7 @@ class ResponsiveExtension extends AbstractTypeExtension
     /**
      * @var array
      */
-    private $validVisible = array(
+    private $validVisible = [
         'xs-block',
         'xs-inline',
         'xs-inline-block',
@@ -45,22 +45,22 @@ class ResponsiveExtension extends AbstractTypeExtension
         'print-block',
         'print-inline',
         'print-inline-block',
-    );
+    ];
 
     /**
      * @var array
      */
-    private $validHidden = array('xs', 'sm', 'md', 'lg', 'print');
+    private $validHidden = ['xs', 'sm', 'md', 'lg', 'print'];
 
     /**
      * {@inheritdoc}
      */
     public function buildView(BlockView $view, BlockInterface $block, array $options)
     {
-        $view->vars = array_replace($view->vars, array(
+        $view->vars = array_replace($view->vars, [
             'visible_viewport' => implode(' ', $options['visible_viewport']),
             'hidden_viewport' => implode(' ', $options['hidden_viewport']),
-        ));
+        ]);
     }
 
     /**
@@ -68,13 +68,13 @@ class ResponsiveExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'visible_viewport' => null,
             'hidden_viewport' => null,
-        ));
+        ]);
 
-        $resolver->setAllowedTypes('visible_viewport', array('null', 'string', 'array'));
-        $resolver->setAllowedTypes('hidden_viewport', array('null', 'string', 'array'));
+        $resolver->setAllowedTypes('visible_viewport', ['null', 'string', 'array']);
+        $resolver->setAllowedTypes('hidden_viewport', ['null', 'string', 'array']);
 
         $resolver->setNormalizer('visible_viewport', function (Options $options, $value = null) {
             return $this->normaliseViewport('visible', $this->validVisible, $value);
@@ -128,9 +128,9 @@ class ResponsiveExtension extends AbstractTypeExtension
     protected function convertToArray($value)
     {
         if (is_string($value)) {
-            $value = array($value);
+            $value = [$value];
         } elseif (null === $value) {
-            $value = array();
+            $value = [];
         }
 
         return $value;
