@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
+namespace Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
-use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+use Fxp\Component\Bootstrap\Block\DataSource\DataSourceConfig;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TranslatableTransformer implements PreExecuteQueryTransformerInterface
 {

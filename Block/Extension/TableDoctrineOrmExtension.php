@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Block\Extension;
+namespace Fxp\Component\Bootstrap\Block\Extension;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
-use Sonatra\Component\Block\AbstractTypeExtension;
-use Sonatra\Component\Block\BlockBuilderInterface;
-use Sonatra\Component\Bootstrap\Block\Type\TableType;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\DoctrineOrmDataSource;
+use Fxp\Component\Block\AbstractTypeExtension;
+use Fxp\Component\Block\BlockBuilderInterface;
+use Fxp\Component\Bootstrap\Block\Type\TableType;
+use Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\DoctrineOrmDataSource;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Table Doctrine ORM Block Extension.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class TableDoctrineOrmExtension extends AbstractTypeExtension
 {

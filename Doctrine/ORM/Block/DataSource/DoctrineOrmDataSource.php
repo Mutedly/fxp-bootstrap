@@ -1,30 +1,30 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource;
+namespace Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Sonatra\Component\Block\Exception\BadMethodCallException;
-use Sonatra\Component\Bootstrap\Block\DataSource\DataSource;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\OrderByTransformer;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PostExecuteQueryTransformerInterface;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PreExecuteQueryTransformerInterface;
-use Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\TranslatableTransformer;
+use Fxp\Component\Block\Exception\BadMethodCallException;
+use Fxp\Component\Bootstrap\Block\DataSource\DataSource;
+use Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\OrderByTransformer;
+use Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PostExecuteQueryTransformerInterface;
+use Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\PreExecuteQueryTransformerInterface;
+use Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer\TranslatableTransformer;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DoctrineOrmDataSource extends DataSource
 {

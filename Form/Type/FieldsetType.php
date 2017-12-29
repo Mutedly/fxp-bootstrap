@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Form\Type;
+namespace Fxp\Component\Bootstrap\Form\Type;
 
-use Sonatra\Component\Bootstrap\Form\Common\ConfigLayout;
+use Fxp\Component\Bootstrap\Form\Common\ConfigLayout;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Fiedlset Form Type.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class FieldsetType extends AbstractType
 {

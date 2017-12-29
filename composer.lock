@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "185b0667b59e4bf915b695b4a701749c",
+    "content-hash": "0d17e2ee436e308db0fb1fb6ce9a17a2",
     "packages": [
         {
-            "name": "sonatra/block",
+            "name": "fxp/block",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sonatra/sonatra-block.git",
-                "reference": "715ead737a27771752d277c5c8994d9ed70b61ea"
+                "url": "https://github.com/fxpio/fxp-block.git",
+                "reference": "884968ccd39875403ac9f35f332033f0e480c59f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonatra/sonatra-block/zipball/715ead737a27771752d277c5c8994d9ed70b61ea",
-                "reference": "715ead737a27771752d277c5c8994d9ed70b61ea",
+                "url": "https://api.github.com/repos/fxpio/fxp-block/zipball/884968ccd39875403ac9f35f332033f0e480c59f",
+                "reference": "884968ccd39875403ac9f35f332033f0e480c59f",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Sonatra\\Component\\Block\\": ""
+                    "Fxp\\Component\\Block\\": ""
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
@@ -60,17 +60,17 @@
             "authors": [
                 {
                     "name": "François Pluchino",
-                    "email": "francois.pluchino@sonatra.com"
+                    "email": "francois.pluchino@gmail.com"
                 }
             ],
             "description": "Provides tools for defining UI blocks, rendering and mapping response data to related models",
-            "homepage": "https://github.com/sonatra/sonatra-block",
+            "homepage": "https://github.com/fxpio/fxp-block",
             "keywords": [
                 "block",
                 "ui",
                 "user interface"
             ],
-            "time": "2017-12-27T10:03:40+00:00"
+            "time": "2017-12-29T16:42:13+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1245,16 +1245,16 @@
         },
         {
             "name": "foxy/foxy",
-            "version": "v1.0.0-beta2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/foxypkg/foxy.git",
-                "reference": "87af57c641a15fa372caeb0c85a08e9f34f1ea33"
+                "url": "https://github.com/fxpio/foxy.git",
+                "reference": "c8225f715cbe0b9310972e3d67ca15955691a26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/foxypkg/foxy/zipball/87af57c641a15fa372caeb0c85a08e9f34f1ea33",
-                "reference": "87af57c641a15fa372caeb0c85a08e9f34f1ea33",
+                "url": "https://api.github.com/repos/fxpio/foxy/zipball/c8225f715cbe0b9310972e3d67ca15955691a26e",
+                "reference": "c8225f715cbe0b9310972e3d67ca15955691a26e",
                 "shasum": ""
             },
             "require": {
@@ -1290,7 +1290,7 @@
                 }
             ],
             "description": "Fast, reliable, and secure NPM/Yarn bridge for Composer",
-            "homepage": "https://github.com/foxypkg/foxy",
+            "homepage": "https://github.com/fxpio/foxy",
             "keywords": [
                 "Bridge",
                 "asset",
@@ -1301,20 +1301,82 @@
                 "package",
                 "yarn"
             ],
-            "time": "2017-10-03T14:33:14+00:00"
+            "time": "2017-12-28T12:45:51+00:00"
         },
         {
-            "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.31",
+            "name": "fxp/doctrine-extensions",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "79cd1d49898a21ede9a5dfad41c021abd9a14339"
+                "url": "https://github.com/fxpio/fxp-doctrine-extensions.git",
+                "reference": "c13f68d7fcbce80b73c519acad8d2adda26e0686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/79cd1d49898a21ede9a5dfad41c021abd9a14339",
-                "reference": "79cd1d49898a21ede9a5dfad41c021abd9a14339",
+                "url": "https://api.github.com/repos/fxpio/fxp-doctrine-extensions/zipball/c13f68d7fcbce80b73c519acad8d2adda26e0686",
+                "reference": "c13f68d7fcbce80b73c519acad8d2adda26e0686",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.6.0",
+                "php": "^7.1.0"
+            },
+            "require-dev": {
+                "symfony/doctrine-bridge": "^3.4.0|^4.0.0",
+                "symfony/event-dispatcher": "^3.4.0|^4.0.0",
+                "symfony/http-kernel": "^3.4.0|^4.0.0",
+                "symfony/validator": "^3.4.0|^4.0.0"
+            },
+            "suggest": {
+                "creof/doctrine2-spatial": "For add geo spacial extensions",
+                "stof/doctrine-extensions-bundle": "For use some nice extensions for doctrine"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fxp\\Component\\DoctrineExtensions\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Pluchino",
+                    "email": "francois.pluchino@gmail.com"
+                }
+            ],
+            "description": "Add doctrine unique entity validator",
+            "homepage": "https://github.com/fxpio/fxp-doctrine-extensions",
+            "keywords": [
+                "doctrine",
+                "extensions",
+                "unique entity",
+                "validator"
+            ],
+            "time": "2017-12-29T09:35:28+00:00"
+        },
+        {
+            "name": "gedmo/doctrine-extensions",
+            "version": "v2.4.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
+                "reference": "a268224b312353be62d72e6390a286f4166a7542"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/a268224b312353be62d72e6390a286f4166a7542",
+                "reference": "a268224b312353be62d72e6390a286f4166a7542",
                 "shasum": ""
             },
             "require": {
@@ -1327,7 +1389,7 @@
                 "doctrine/mongodb-odm": ">=1.0.2",
                 "doctrine/orm": ">=2.5.0",
                 "phpunit/phpunit": "*",
-                "symfony/yaml": "~2.6|~3.0"
+                "symfony/yaml": "~2.6|~3.0|~4.0"
             },
             "suggest": {
                 "doctrine/mongodb-odm": "to use the extensions with the MongoDB ODM",
@@ -1379,69 +1441,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2017-10-12T06:26:21+00:00"
-        },
-        {
-            "name": "sonatra/doctrine-extensions",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sonatra/sonatra-doctrine-extensions.git",
-                "reference": "ef64d3928e9d275f292ddeedd55c658d9e23ba41"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sonatra/sonatra-doctrine-extensions/zipball/ef64d3928e9d275f292ddeedd55c658d9e23ba41",
-                "reference": "ef64d3928e9d275f292ddeedd55c658d9e23ba41",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "^2.6.0",
-                "php": "^7.1.0"
-            },
-            "require-dev": {
-                "symfony/doctrine-bridge": "^3.4.0|^4.0.0",
-                "symfony/event-dispatcher": "^3.4.0|^4.0.0",
-                "symfony/http-kernel": "^3.4.0|^4.0.0",
-                "symfony/validator": "^3.4.0|^4.0.0"
-            },
-            "suggest": {
-                "creof/doctrine2-spatial": "For add geo spacial extensions",
-                "stof/doctrine-extensions-bundle": "For use some nice extensions for doctrine"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sonatra\\Component\\DoctrineExtensions\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Pluchino",
-                    "email": "francois.pluchino@sonatra.com"
-                }
-            ],
-            "description": "Add doctrine unique entity validator",
-            "homepage": "https://github.com/sonatra/sonatra-doctrine-extensions",
-            "keywords": [
-                "doctrine",
-                "extensions",
-                "unique entity",
-                "validator"
-            ],
-            "time": "2017-12-26T17:44:45+00:00"
+            "time": "2017-12-28T14:36:10+00:00"
         },
         {
             "name": "symfony/console",

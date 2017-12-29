@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
+namespace Fxp\Component\Bootstrap\Doctrine\ORM\Block\DataSource\Transformer;
 
 use Doctrine\ORM\Query;
-use Sonatra\Component\Block\Exception\InvalidArgumentException;
-use Sonatra\Component\Bootstrap\Block\DataSource\DataSourceConfig;
-use Sonatra\Component\DoctrineExtensions\ORM\Query\OrderByWalker;
+use Fxp\Component\Block\Exception\InvalidArgumentException;
+use Fxp\Component\Bootstrap\Block\DataSource\DataSourceConfig;
+use Fxp\Component\DoctrineExtensions\ORM\Query\OrderByWalker;
 
 /**
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class OrderByTransformer implements PreExecuteQueryTransformerInterface
 {
