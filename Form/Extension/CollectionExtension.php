@@ -143,8 +143,8 @@ class CollectionExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return CollectionType::class;
+        return [CollectionType::class];
     }
 }

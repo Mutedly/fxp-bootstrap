@@ -38,8 +38,8 @@ class UrlExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return UrlType::class;
+        return [UrlType::class];
     }
 }
