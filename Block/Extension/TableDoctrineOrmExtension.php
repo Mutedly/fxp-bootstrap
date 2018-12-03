@@ -79,8 +79,8 @@ class TableDoctrineOrmExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return TableType::class;
+        return [TableType::class];
     }
 }

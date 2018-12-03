@@ -43,8 +43,8 @@ class RepeatedExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return RepeatedType::class;
+        return [RepeatedType::class];
     }
 }

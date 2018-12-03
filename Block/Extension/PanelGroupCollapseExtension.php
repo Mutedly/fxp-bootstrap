@@ -118,8 +118,8 @@ class PanelGroupCollapseExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public static function getExtendedTypes()
     {
-        return PanelGroupType::class;
+        return [PanelGroupType::class];
     }
 }
