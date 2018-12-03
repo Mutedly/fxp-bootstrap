@@ -48,15 +48,15 @@ class MediaType extends AbstractType
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
         foreach ($view->children as $child) {
-            if (in_array('link', $child->vars['block_prefixes']) || in_array('image', $child->vars['block_prefixes'])) {
-                if (in_array('image', $child->vars['block_prefixes'])) {
+            if (\in_array('link', $child->vars['block_prefixes']) || \in_array('image', $child->vars['block_prefixes'])) {
+                if (\in_array('image', $child->vars['block_prefixes'])) {
                     BlockUtil::addAttributeClass($child, 'media-object');
                 }
 
                 BlockUtil::addAttributeClass($child, 'pull-'.$options['align']);
 
                 foreach ($child->children as $subChild) {
-                    if (in_array('image', $subChild->vars['block_prefixes'])) {
+                    if (\in_array('image', $subChild->vars['block_prefixes'])) {
                         BlockUtil::addAttributeClass($subChild, 'media-object');
                     }
                 }

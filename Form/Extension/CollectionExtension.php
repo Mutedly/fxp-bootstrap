@@ -51,7 +51,7 @@ class CollectionExtension extends AbstractTypeExtension
         if ($options['allow_add']) {
             $btnAdd = $options['btn_add'];
 
-            if (is_array($btnAdd)) {
+            if (\is_array($btnAdd)) {
                 $btnAdd = $builder->create('add', ButtonType::class, $options['btn_add'])->getForm();
             }
 
@@ -90,7 +90,7 @@ class CollectionExtension extends AbstractTypeExtension
         $resolver->addAllowedTypes('btn_delete', ['array', 'Symfony\Component\Form\Form']);
 
         $btnAddNormalizer = function (Options $options, $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $value = array_merge(
                     [
                         'label' => '',
@@ -113,7 +113,7 @@ class CollectionExtension extends AbstractTypeExtension
             if ($options['allow_delete'] && $options['prototype']) {
                 $value['append'] = $options['btn_delete'];
 
-                if (is_array($value['append'])) {
+                if (\is_array($value['append'])) {
                     $value['append'] = array_merge(
                         [
                             'label' => '',

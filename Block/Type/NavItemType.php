@@ -64,14 +64,14 @@ class NavItemType extends AbstractType
         $view->vars['is_item_dropdown'] = false;
 
         foreach ($view->children as $name => $child) {
-            if (in_array('dropdown', $child->vars['block_prefixes'])) {
+            if (\in_array('dropdown', $child->vars['block_prefixes'])) {
                 $child->vars['wrapper'] = false;
                 $view->vars['is_item_dropdown'] = true;
                 $view->vars['dropdown'] = $child;
                 unset($view->children[$name]);
 
                 foreach ($child->children as $sChild) {
-                    if (isset($child->parent->vars['link_attr']['data-toggle']) && !in_array('dropdown', $child->parent->vars['block_prefixes'])) {
+                    if (isset($child->parent->vars['link_attr']['data-toggle']) && !\in_array('dropdown', $child->parent->vars['block_prefixes'])) {
                         $sChild->vars['link_attr']['data-toggle'] = $child->parent->vars['link_attr']['data-toggle'];
                     }
                 }

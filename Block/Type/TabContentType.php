@@ -31,7 +31,7 @@ class TabContentType extends AbstractType
         $firstItem = null;
 
         foreach ($view->children as $name => $child) {
-            if (!in_array('tab_pane', $child->vars['block_prefixes'])) {
+            if (!\in_array('tab_pane', $child->vars['block_prefixes'])) {
                 continue;
             }
 

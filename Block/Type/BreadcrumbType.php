@@ -31,7 +31,7 @@ class BreadcrumbType extends AbstractType
         $last = null;
 
         foreach ($view->children as $child) {
-            if (in_array('breadcrumb_item', $child->vars['block_prefixes'])) {
+            if (\in_array('breadcrumb_item', $child->vars['block_prefixes'])) {
                 $last = $child;
             }
         }

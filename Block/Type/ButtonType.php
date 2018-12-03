@@ -66,7 +66,7 @@ class ButtonType extends AbstractType
         }
 
         foreach ($view->children as $name => $child) {
-            if (in_array('dropdown', $child->vars['block_prefixes'])) {
+            if (\in_array('dropdown', $child->vars['block_prefixes'])) {
                 $child->vars['wrapper'] = false;
                 $view->vars['dropdown'] = $child;
                 unset($view->children[$name]);

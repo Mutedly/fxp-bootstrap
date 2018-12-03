@@ -41,7 +41,7 @@ class TranslatableTransformer implements PreExecuteQueryTransformerInterface
 
         if ($this->em->getEventManager()->hasListeners('postLoad')) {
             foreach ($this->em->getEventManager()->getListeners('postLoad') as $listener) {
-                if ('Gedmo\Translatable\TranslatableListener' === get_class($listener)) {
+                if ('Gedmo\Translatable\TranslatableListener' === \get_class($listener)) {
                     $this->hasTranslatable = true;
                     break;
                 }

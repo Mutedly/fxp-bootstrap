@@ -45,7 +45,7 @@ class AddonExtension extends AbstractTypeExtension
         ]);
 
         // prepend
-        if (is_string($prepend)) {
+        if (\is_string($prepend)) {
             $view->vars['prepend_string'] = $prepend;
         } elseif ($prepend instanceof FormInterface) {
             $view->vars['prepend_form'] = $prepend->createView($view);
@@ -54,7 +54,7 @@ class AddonExtension extends AbstractTypeExtension
         }
 
         // append
-        if (is_string($append)) {
+        if (\is_string($append)) {
             $view->vars['append_string'] = $append;
         } elseif ($append instanceof FormInterface) {
             $view->vars['append_form'] = $append->createView($view);
@@ -125,7 +125,7 @@ class AddonExtension extends AbstractTypeExtension
      */
     protected function definedType($addon, $type)
     {
-        if (is_string($addon)) {
+        if (\is_string($addon)) {
             return null !== $type ? $type : 'addon';
         } elseif ($addon instanceof FormInterface) {
             return 'btn';

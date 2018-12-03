@@ -69,7 +69,7 @@ class CarouselType extends AbstractType
             $firstChild = null;
 
             foreach ($view->children as $child) {
-                if (in_array('carousel_item', $child->vars['block_prefixes'])) {
+                if (\in_array('carousel_item', $child->vars['block_prefixes'])) {
                     $active = isset($child->vars['active']) && $child->vars['active'];
                     $indicators[] = $active;
 
@@ -87,7 +87,7 @@ class CarouselType extends AbstractType
                 }
             }
 
-            if (!$hasActive && count($indicators) > 0) {
+            if (!$hasActive && \count($indicators) > 0) {
                 $indicators[0] = true;
                 $firstChild->vars['active'] = true;
             }

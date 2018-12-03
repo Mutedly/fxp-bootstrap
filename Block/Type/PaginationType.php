@@ -52,7 +52,7 @@ class PaginationType extends AbstractType
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
         foreach ($view->children as $name => $child) {
-            if (in_array('pagination_item', $child->vars['block_prefixes'])) {
+            if (\in_array('pagination_item', $child->vars['block_prefixes'])) {
                 if ('previous' === $name) {
                     $view->vars['block_previous'] = $child;
                     unset($view->children[$name]);

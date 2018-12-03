@@ -47,15 +47,15 @@ class NavbarType extends AbstractType
         $collapse = null;
 
         foreach ($view->children as $child) {
-            if (null === $header && in_array('navbar_header', $child->vars['block_prefixes'])) {
+            if (null === $header && \in_array('navbar_header', $child->vars['block_prefixes'])) {
                 $header = $child;
-            } elseif (null === $collapse && in_array('navbar_collapse', $child->vars['block_prefixes'])) {
+            } elseif (null === $collapse && \in_array('navbar_collapse', $child->vars['block_prefixes'])) {
                 $collapse = $child;
-            } elseif (in_array('container', $child->vars['block_prefixes'])) {
+            } elseif (\in_array('container', $child->vars['block_prefixes'])) {
                 foreach ($child->children as $subChild) {
-                    if (null === $header && in_array('navbar_header', $subChild->vars['block_prefixes'])) {
+                    if (null === $header && \in_array('navbar_header', $subChild->vars['block_prefixes'])) {
                         $header = $subChild;
-                    } elseif (null === $collapse && in_array('navbar_collapse', $subChild->vars['block_prefixes'])) {
+                    } elseif (null === $collapse && \in_array('navbar_collapse', $subChild->vars['block_prefixes'])) {
                         $collapse = $subChild;
                     }
                 }
@@ -99,19 +99,19 @@ class NavbarType extends AbstractType
 
     protected function cleanChildren(BlockView $view)
     {
-        if (in_array('nav', $view->vars['block_prefixes'])) {
+        if (\in_array('nav', $view->vars['block_prefixes'])) {
             BlockUtil::addAttributeClass($view, 'navbar-nav', true);
             $view->vars['style'] = null;
-        } elseif (in_array('nav_item', $view->vars['block_prefixes'])) {
+        } elseif (\in_array('nav_item', $view->vars['block_prefixes'])) {
             unset($view->vars['link_attr']['data-toggle']);
-        } elseif (in_array('form', $view->vars['block_prefixes'])) {
+        } elseif (\in_array('form', $view->vars['block_prefixes'])) {
             BlockUtil::addAttributeClass($view, 'navbar-form', true);
             $view->vars['attr']['role'] = 'search';
-        } elseif (in_array('button', $view->vars['block_prefixes'])) {
+        } elseif (\in_array('button', $view->vars['block_prefixes'])) {
             BlockUtil::addAttributeClass($view, 'navbar-button');
-        } elseif (in_array('paragraph', $view->vars['block_prefixes']) || in_array('text', $view->vars['block_prefixes'])) {
+        } elseif (\in_array('paragraph', $view->vars['block_prefixes']) || \in_array('text', $view->vars['block_prefixes'])) {
             BlockUtil::addAttributeClass($view, 'navbar-text', true);
-        } elseif (in_array('link', $view->vars['block_prefixes'])) {
+        } elseif (\in_array('link', $view->vars['block_prefixes'])) {
             BlockUtil::addAttributeClass($view, 'navbar-link', true);
         }
 

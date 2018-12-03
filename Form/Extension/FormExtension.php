@@ -44,7 +44,7 @@ class FormExtension extends AbstractTypeExtension
             'help_attr' => $options['help_attr'],
         ]);
 
-        if (count($form->getErrors()) > 0) {
+        if (\count($form->getErrors()) > 0) {
             $view->vars['validation_state'] = 'error';
         }
     }

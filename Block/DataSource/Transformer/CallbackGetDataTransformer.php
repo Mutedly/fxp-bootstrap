@@ -46,7 +46,7 @@ class CallbackGetDataTransformer implements PreGetDataTransformerInterface, Post
     public function preGetData(DataSourceConfig $config)
     {
         if (null !== $this->preCallback) {
-            call_user_func($this->preCallback);
+            \call_user_func($this->preCallback);
         }
     }
 
@@ -56,7 +56,7 @@ class CallbackGetDataTransformer implements PreGetDataTransformerInterface, Post
     public function postGetData(DataSourceConfig $config)
     {
         if (null !== $this->postCallback) {
-            call_user_func($this->postCallback);
+            \call_user_func($this->postCallback);
         }
     }
 }

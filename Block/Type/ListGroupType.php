@@ -39,7 +39,7 @@ class ListGroupType extends AbstractType
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
         foreach ($view->children as $child) {
-            if (in_array('list_group_item', $child->vars['block_prefixes']) && $child->vars['is_link']) {
+            if (\in_array('list_group_item', $child->vars['block_prefixes']) && $child->vars['is_link']) {
                 $view->vars = array_replace($view->vars, [
                     'tag' => 'div',
                 ]);

@@ -45,7 +45,7 @@ class NavType extends AbstractType
         $firstItem = null;
 
         foreach ($view->children as $name => $child) {
-            if (!in_array('nav_item', $child->vars['block_prefixes'])) {
+            if (!\in_array('nav_item', $child->vars['block_prefixes'])) {
                 continue;
             }
 

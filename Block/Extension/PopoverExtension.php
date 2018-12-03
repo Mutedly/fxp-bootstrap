@@ -41,7 +41,7 @@ class PopoverExtension extends AbstractTypeExtension
                 }
             }
 
-            if (null !== $view->parent && in_array('button_group', $view->parent->vars['block_prefixes'])) {
+            if (null !== $view->parent && \in_array('button_group', $view->parent->vars['block_prefixes'])) {
                 $attr['data-container'] = 'body';
             }
 

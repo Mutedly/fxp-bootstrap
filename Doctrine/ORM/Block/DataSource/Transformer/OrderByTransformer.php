@@ -28,10 +28,10 @@ class OrderByTransformer implements PreExecuteQueryTransformerInterface
     {
         $sortColumns = $config->getSortColumns();
 
-        if (count($sortColumns) > 0) {
+        if (\count($sortColumns) > 0) {
             $customTreeWalkers = $query->getHint(Query::HINT_CUSTOM_TREE_WALKERS);
 
-            if (!is_array($customTreeWalkers)) {
+            if (!\is_array($customTreeWalkers)) {
                 $customTreeWalkers = [];
             }
 
@@ -52,7 +52,7 @@ class OrderByTransformer implements PreExecuteQueryTransformerInterface
                 $sort = isset($sortConfig['sort']) ? $sortConfig['sort'] : 'asc';
                 $exp = explode('.', $index);
 
-                if (1 === count($exp)) {
+                if (1 === \count($exp)) {
                     array_unshift($exp, false);
                 }
 

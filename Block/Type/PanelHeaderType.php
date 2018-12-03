@@ -48,7 +48,7 @@ class PanelHeaderType extends AbstractType
         if (BlockUtil::isBlockType($child, HeadingType::class)) {
             if ($block->has('_heading')) {
                 $msg = 'The panel header block "%s" has already panel title. Removes the label option of the panel header block.';
-                throw new InvalidConfigurationException(sprintf($msg, StringUtil::fqcnToBlockPrefix(get_class($block->getConfig()->getType()->getInnerType()), true)));
+                throw new InvalidConfigurationException(sprintf($msg, StringUtil::fqcnToBlockPrefix(\get_class($block->getConfig()->getType()->getInnerType()), true)));
             }
         }
     }
@@ -59,7 +59,7 @@ class PanelHeaderType extends AbstractType
     public function finishView(BlockView $view, BlockInterface $block, array $options)
     {
         foreach ($view->children as $name => $child) {
-            if (in_array('heading', $child->vars['block_prefixes'])) {
+            if (\in_array('heading', $child->vars['block_prefixes'])) {
                 BlockUtil::addAttributeClass($child, 'panel-title');
 
                 $view->vars['panel_heading'] = $child;

@@ -64,7 +64,7 @@ class TableDoctrineOrmExtension extends AbstractTypeExtension
             $source->setPageNumber($options['page_number']);
 
             $builder->setData($source);
-            $builder->setDataClass(get_class($source));
+            $builder->setDataClass(\get_class($source));
         }
     }
 

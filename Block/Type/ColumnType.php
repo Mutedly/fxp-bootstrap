@@ -120,7 +120,7 @@ class ColumnType extends AbstractType
      */
     protected function convertToArray($value)
     {
-        if (is_string($value)) {
+        if (\is_string($value)) {
             $value = [$value];
         } elseif (null === $value) {
             $value = [];
@@ -147,7 +147,7 @@ class ColumnType extends AbstractType
 
         list($prefix, $size) = explode('-', $value);
 
-        if (!in_array($prefix, $this->validPrefix)) {
+        if (!\in_array($prefix, $this->validPrefix)) {
             throw new InvalidConfigurationException(sprintf('The "%s" prefix option does not exist. Known options are: "'.implode('", "', $this->validPrefix).'"', $type));
         }
 

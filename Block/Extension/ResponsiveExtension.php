@@ -108,7 +108,7 @@ class ResponsiveExtension extends AbstractTypeExtension
         $value = $this->convertToArray($value);
 
         foreach ($value as $i => $viewport) {
-            if (!in_array($viewport, $valid)) {
+            if (!\in_array($viewport, $valid)) {
                 throw new InvalidConfigurationException(sprintf('The "%s" %s viewport option does not exist. Known options are: "%s"', $viewport, $prefix, implode('", "', $valid)));
             }
 
@@ -127,7 +127,7 @@ class ResponsiveExtension extends AbstractTypeExtension
      */
     protected function convertToArray($value)
     {
-        if (is_string($value)) {
+        if (\is_string($value)) {
             $value = [$value];
         } elseif (null === $value) {
             $value = [];

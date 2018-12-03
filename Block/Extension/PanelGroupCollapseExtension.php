@@ -89,7 +89,7 @@ class PanelGroupCollapseExtension extends AbstractTypeExtension
                     }
                 }
 
-                if (in_array($view->vars['id'], $options['collapse_ins'])) {
+                if (\in_array($view->vars['id'], $options['collapse_ins'])) {
                     $child->vars['group_collapse_in'] = true;
                 }
             }

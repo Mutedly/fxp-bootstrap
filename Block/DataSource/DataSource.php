@@ -232,7 +232,7 @@ class DataSource implements DataSourceInterface
         }
 
         $this->doPreGetData();
-        $pagination = array_slice($this->rows, $startTo, $endTo);
+        $pagination = \array_slice($this->rows, $startTo, $endTo);
         $this->doPostGetData();
         $this->cacheRows = $this->paginateRows($pagination, $this->getStart());
 
@@ -397,7 +397,7 @@ class DataSource implements DataSourceInterface
      */
     protected function calculateSize()
     {
-        return count($this->rows);
+        return \count($this->rows);
     }
 
     /**
@@ -409,11 +409,11 @@ class DataSource implements DataSourceInterface
      */
     protected function formatIndex($name)
     {
-        if (is_string($name)) {
+        if (\is_string($name)) {
             $exp = explode('.', $name);
 
-            if (0 < count($exp)) {
-                $name = $exp[count($exp) - 1];
+            if (0 < \count($exp)) {
+                $name = $exp[\count($exp) - 1];
             }
         }
 
@@ -488,7 +488,7 @@ class DataSource implements DataSourceInterface
                     continue;
                 }
 
-                if (count($column->getOption('attr')) > 0) {
+                if (\count($column->getOption('attr')) > 0) {
                     $row['_attr_columns'][$column->getName()] = $column->getOption('attr');
                 }
 
@@ -521,7 +521,7 @@ class DataSource implements DataSourceInterface
                 $row[$column->getName()] = $this->renderer->searchAndRenderBlock($cell->createView(), 'widget');
             }
 
-            if (0 === count($row['_attr_columns'])) {
+            if (0 === \count($row['_attr_columns'])) {
                 unset($row['_attr_columns']);
             }
 

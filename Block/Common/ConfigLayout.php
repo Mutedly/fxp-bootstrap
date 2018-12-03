@@ -31,7 +31,7 @@ class ConfigLayout
                 'row_label' => $view->parent->vars['row_label'],
             ]);
 
-            if (in_array('object', $view->parent->vars['block_prefixes'])) {
+            if (\in_array('object', $view->parent->vars['block_prefixes'])) {
                 $view->vars = array_replace($view->vars, [
                     'layout' => $view->parent->vars['layout'],
                     'layout_col_size' => $view->parent->vars['layout_col_size'],
@@ -47,7 +47,7 @@ class ConfigLayout
      */
     public static function finishView(BlockView $view)
     {
-        if (null !== $view->parent && in_array('object', $view->parent->vars['block_prefixes'])) {
+        if (null !== $view->parent && \in_array('object', $view->parent->vars['block_prefixes'])) {
             foreach ($view->children as $child) {
                 $child->vars = array_replace($child->vars, [
                     'layout' => $view->parent->vars['layout'],

@@ -51,7 +51,7 @@ class TableType extends AbstractType
      */
     public function buildBlock(BlockBuilderInterface $builder, array $options)
     {
-        if (is_array($builder->getData())) {
+        if (\is_array($builder->getData())) {
             $source = new DataSource($options['row_id']);
             $source->setPageSizeMax($options['page_size_max']);
             $source->setPageSize($options['page_size']);
@@ -62,7 +62,7 @@ class TableType extends AbstractType
             $source->setPageNumber($options['page_number']);
 
             $builder->setData($source);
-            $builder->setDataClass(get_class($source));
+            $builder->setDataClass(\get_class($source));
         }
 
         $builder->add('_header', TableHeaderType::class);
@@ -134,16 +134,16 @@ class TableType extends AbstractType
         $columns = [];
 
         foreach ($view->children as $name => $child) {
-            if (in_array('table_caption', $child->vars['block_prefixes'])) {
+            if (\in_array('table_caption', $child->vars['block_prefixes'])) {
                 $view->vars['caption'] = $child;
                 unset($view->children[$name]);
-            } elseif (in_array('table_header', $child->vars['block_prefixes'])) {
+            } elseif (\in_array('table_header', $child->vars['block_prefixes'])) {
                 $view->vars['header'] = $child;
                 unset($view->children[$name]);
-            } elseif (in_array('table_footer', $child->vars['block_prefixes'])) {
+            } elseif (\in_array('table_footer', $child->vars['block_prefixes'])) {
                 $view->vars['footer'] = $child;
                 unset($view->children[$name]);
-            } elseif (in_array('table_column', $child->vars['block_prefixes'])) {
+            } elseif (\in_array('table_column', $child->vars['block_prefixes'])) {
                 $columns[] = $child;
                 unset($view->children[$name]);
             }

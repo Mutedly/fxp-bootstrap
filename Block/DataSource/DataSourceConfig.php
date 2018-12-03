@@ -258,7 +258,7 @@ class DataSourceConfig
      */
     public function getColumnIndex($name)
     {
-        if (!is_array($this->mappingColumns)) {
+        if (!\is_array($this->mappingColumns)) {
             $this->mappingColumns = [];
 
             /* @var BlockInterface $column */

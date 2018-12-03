@@ -50,10 +50,10 @@ class DropdownItemType extends AbstractType
         $appends = [];
 
         foreach ($view->children as $name => $child) {
-            if (in_array('dropdown_item_prepend', $child->vars['block_prefixes'])) {
+            if (\in_array('dropdown_item_prepend', $child->vars['block_prefixes'])) {
                 $prepends[$name] = $view->children[$name];
                 unset($view->children[$name]);
-            } elseif (in_array('dropdown_item_append', $child->vars['block_prefixes'])) {
+            } elseif (\in_array('dropdown_item_append', $child->vars['block_prefixes'])) {
                 $appends[$name] = $view->children[$name];
                 unset($view->children[$name]);
             }

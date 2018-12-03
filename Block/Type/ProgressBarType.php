@@ -37,7 +37,7 @@ class ProgressBarType extends AbstractType
             'stacked' => false,
         ]);
 
-        if (isset($view->parent) && in_array('progress_bar', $view->parent->vars['block_prefixes'])) {
+        if (isset($view->parent) && \in_array('progress_bar', $view->parent->vars['block_prefixes'])) {
             $view->vars = array_replace($view->vars, [
                 'stacked' => true,
             ]);
