@@ -15,7 +15,7 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
@@ -29,16 +29,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CollectionExtension extends AbstractTypeExtension
 {
     /**
-     * @var FormFactory
+     * @var FormFactoryInterface
      */
     protected $factory;
 
     /**
      * Constructor.
      *
-     * @param FormFactory $factory
+     * @param FormFactoryInterface $factory
      */
-    public function __construct(FormFactory $factory)
+    public function __construct(FormFactoryInterface $factory)
     {
         $this->factory = $factory;
     }
